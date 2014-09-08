@@ -29,8 +29,8 @@ FIELD
 EQLDIMS
     1  100   10    1    1 /
 
---TABDIMS
---    1    1   17   12    1   12 /
+TABDIMS
+    1    1   17   12    1   12 /
 
 WELLDIMS
     2    1    1    2 /
