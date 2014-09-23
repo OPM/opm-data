@@ -1,0 +1,20 @@
+This directory contains an simple input data file which is based on
+the first comparison project of the society of petroleum engineers
+[1]. The dataset consists of a single file called 'SIMPLESPE1.DATA'
+and uses the ECL format which is used by many standard commercial
+simulators for oil reservoirs.
+
+The simplifications are that the grid consists only of a single layer
+of cells, and that there is no injector well specified. (i.e., only a
+producer is present.)
+
+Just like for the SPE1 dataset, the ownership of the copyright of this
+file is unclear: Some parts seem to be written by Schlumberger [2],
+which in turn seem to be modified by Jon Kleppe of NTNU [3] and some
+(mainly saturation function related) data seems to be calculated by
+SINTEF using MRST.  Finally some modifications where done by Ove
+Savareid and Andreas Lauser in the context of the OPM project.
+
+[1] http://www.spe.org/web/csp/datasets/set01.htm
+[2] http://slb.com
+[3] http://www.ipt.ntnu.no/~kleppe/TPG4160/ex3/ODEH.DATA
