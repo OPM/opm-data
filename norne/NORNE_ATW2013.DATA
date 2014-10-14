@@ -381,10 +381,6 @@ RPTSOL
 
 FIP=3  SWAT / 
 
--- initial condition
-INCLUDE
-'./INCLUDE/GRID/IRAP_1005.GRDECL' / 
-
 ---------------------------------------------------------------------------------
 -- equilibrium data: do not include this file in case of RESTART
 
