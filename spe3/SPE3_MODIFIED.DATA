@@ -20,8 +20,8 @@ VAPOIL
 
 FIELD
 
---EQLDIMS
---1  100   10    1    1 /
+EQLDIMS
+ 1  100   10    1    1 /
 
 TABDIMS
     1    1   25   25    1   15 /
@@ -46,10 +46,9 @@ NSTACK
    25 /
 
 UNIFOUT
-
 UNIFIN
-
-
+--FMTOUT
+--FMTIN
 
 --Grid Properties ======================================================
 -------- IN THIS SECTION , THE GEOMETRY OF THE  SIMULATION GRID AND THE
@@ -312,9 +311,8 @@ RV
 --
 --    DATUM  DATUM  CONTACT CONT   GWC    GOC    
 --    DEPTH  PRESS  DEPTH   PC    DEPTH   PCOG  
--- EQUIL
---        7500   3550   7500    0     7500    0      /
-
+--EQUIL
+--        7500   3550   7500    0     7500    0  0 0 0 /
 -- OUTPUT CONTROLS (SWITCH ON OUTPUT OF INITIAL GRID BLOCK PRESSURES)
 --RPTSOL
 --1  11*0  /
@@ -342,7 +340,18 @@ FWIT
 FGIR
 FGPR
 FGSAT
+
 WBHP
+/
+WOPR
+/
+WGPR
+/
+WWPR
+/
+WGOR
+/
+
 /
 --producer block data
 BSOIL
@@ -365,11 +374,12 @@ BSOIL
 ------------------------------------------------------------------------
 -- CONTROLS ON OUTPUT AT EACH REPORT TIME
 SCHEDULE
---RPTSCHED
---   1   0   1   1   0   0   4   2   2   0   0   2   0   0   0
---   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
---   0   0   0   0   0   0   0   0   1   0   0   0   0   0   0/
---/
+
+RPTSCHED
+   1   0   1   1   0   0   4   2   2   0   0   2   0   0   0
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   1   0   0   0   0   0   0/
+/
 --
 -- STEPS TO 1400 DAYS
 --
