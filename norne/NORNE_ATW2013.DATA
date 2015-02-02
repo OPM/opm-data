@@ -237,10 +237,6 @@ INCLUDE
 INCLUDE
  './INCLUDE/PETRO/FLUXNUM_0704.prop' / 
 
-COPY
-  FLUXNUM MULTNUM /
-/
-
 -- modify transmissibilites between fluxnum using MULTREGT
 INCLUDE
  './INCLUDE/PETRO/MULTREGT_D_27.prop' / 
