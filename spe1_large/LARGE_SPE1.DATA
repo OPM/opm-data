@@ -77,8 +77,9 @@ DYV
 100*100.0
 /
 
-DZV
-10*2.0 10*3.0 10*5.0
+-- E100 does not seem to support the DZV keyword, so we use DZ...
+DZ
+10000*2.0 10000*3.0 10000*5.0
 /
 
 PORO
@@ -318,8 +319,8 @@ RS
 /
 
 -- OUTPUT CONTROLS (SWITCH ON OUTPUT OF INITIAL GRID BLOCK PRESSURES)
-RPTSOL
-   RESTART=2 PRES DENW DENO DENG  POIL PGAS PWAT VOIL VGAS VWAT KRO KRG KRW RSSAT /
+--RPTSOL
+--   RESTART=2 PRES DENW DENO DENG  POIL PGAS PWAT VOIL VGAS VWAT KRO KRG KRW RSSAT /
 --   RESTART=2 DENSO DENSG DENSW POIL PGAS PWAR VOIL VGAS VWAT KRO KRG KRW RSSAT /
 
 SUMMARY  ===============================================================
@@ -366,12 +367,6 @@ BPR
 SCHEDULE ===============================================================
 -------- THE SCHEDULE SECTION DEFINES THE OPERATIONS TO BE SIMULATED
 ------------------------------------------------------------------------
--- CONTROLS ON OUTPUT AT EACH REPORT TIME
-RPTSCHED                                         
-   1   0   1   1   0     0   4   2   2   0     0   2   0   0   0
-   0   0   0   0   0     0   0   0   0   0     0   0   0   0   0
-   0   0   0   0   0     0   0   0   1   0     0   0   0   0   0  /
-
 
 --IMPES
 -- 1.0 1.0 10000.0 /
