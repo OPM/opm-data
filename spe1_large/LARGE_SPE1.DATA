@@ -79,7 +79,9 @@ DYV
 
 -- E100 does not seem to support the DZV keyword, so we use DZ...
 DZ
-10000*2.0 10000*3.0 10000*5.0
+100000*2.0
+100000*3.0
+100000*5.0
 /
 
 PORO
