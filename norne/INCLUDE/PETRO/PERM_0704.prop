@@ -1,3 +1,10 @@
+-- This reservoir simulation deck is made available under the Open Database
+-- License: http://opendatacommons.org/licenses/odbl/1.0/. Any rights in
+-- individual contents of the database are licensed under the Database Contents
+-- License: http://opendatacommons.org/licenses/dbcl/1.0/
+
+-- Copyright (C) 2015 Statoil
+
 
 PERMX
       213.478149      221.009415      225.161331      231.829575      235.915298
