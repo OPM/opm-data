@@ -105,23 +105,25 @@ done
 
 WELLTEX=$OUTPUT.tex
 
-echo "\\documentclass{article}" > $WELLTEX
-echo "\\usepackage{graphicx}" >> $WELLTEX
-echo "\\setlength{\\hoffset}{0cm}" >> $WELLTEX
-echo "\\setlength{\\topmargin}{0.5cm}" >> $WELLTEX
-echo "\\setlength{\\headsep}{0cm}" >> $WELLTEX
-echo "\\setlength{\\headheight}{0cm}" >> $WELLTEX
-echo "\\setlength{\\textheight}{23cm}" >> $WELLTEX
-echo "\\setlength{\\textwidth}{15.5cm}" >> $WELLTEX
-echo "\\setlength{\\evensidemargin}{0.48cm}" >> $WELLTEX
-echo "\\setlength{\\oddsidemargin}{0.0cm}" >> $WELLTEX
-echo "\\begin{document}" >> $WELLTEX
-echo "\\input{$WELLLISTEX}" >> $WELLTEX
-echo "\\end{document}" >> $WELLTEX
+TEXFILE="
+\\documentclass{article}
+\\usepackage{graphicx}
+\\setlength{\\hoffset}{0cm}
+\\setlength{\\topmargin}{0.5cm}
+\\setlength{\\headsep}{0cm}
+\\setlength{\\headheight}{0cm}
+\\setlength{\\textheight}{23cm}
+\\setlength{\\textwidth}{15.5cm}
+\\setlength{\\evensidemargin}{0.48cm}
+\\setlength{\\oddsidemargin}{0.0cm}
+\\begin{document}
+\\input{$WELLLISTEX}
+\\end{document}"
 
-latex --interaction=nonstopmode $OUTPUT
-latex --interaction=nonstopmode $OUTPUT
-dvipdf $OUTPUT
+echo $TEXFILE | latex --interaction=nonstopmode
+echo $TEXFILE | latex --interaction=nonstopmode
+
+dvipdf article $OUTPUT.pdf
 
 # remove temporary files
 rm -f $WELLLISTEX
