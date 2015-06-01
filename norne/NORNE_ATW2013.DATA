@@ -120,8 +120,9 @@ GRID
 
 NEWTRAN
 
+-- Ask for an EGRID file; no .GRID output.
 GRIDFILE
-  2  /
+  0  1 /
 
 -- optional for postprocessing of GRID
 MAPAXES
