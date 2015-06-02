@@ -274,7 +274,7 @@ SOLUTION ===============================================================
 -------- VARIABLES (PHASE PRESSURES, SATURATIONS AND GAS-OIL RATIOS)
 ------------------------------------------------------------------------
 RPTRST
-  BASIC=6 /
+  BASIC=2 /
 
 RPTSOL
   FIP=3 /
