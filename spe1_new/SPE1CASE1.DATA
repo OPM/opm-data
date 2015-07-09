@@ -11,16 +11,14 @@
 -- Journal of Petroleum Technology, January 1981
 
 ---------------------------------------------------------------------------
------------------------- SPE1 - CASE 1 & 2 ---------------------------------
+------------------------ SPE1 - CASE 1 ------------------------------------
 ---------------------------------------------------------------------------
 
 RUNSPEC
 -- -------------------------------------------------------------------------
 
 TITLE
-   SPE1
--- Case 1: Include keyword DRSDT in SCHEDULE-section and the corresponding data
--- Case 2: Do not include keyword DRSDT and the corresponding data
+   SPE1 - CASE 1
 
 DIMENS
 -- Dimensions are 10 x 10 x 3
@@ -356,9 +354,9 @@ RPTRST
 	'BASIC=1' /
 
 
--- If no resolution (i.e. case 1) add:
---DRSDT
--- 0 /
+-- If no resolution (i.e. case 1), the two following lines must be added:
+DRSDT
+ 0 /
 -- if DRSDT is set to 0, GOR cannot rise and free gas does not 
 -- dissolve in undersaturated oil -> constant bubble point pressure
 
