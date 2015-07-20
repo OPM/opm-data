@@ -68,7 +68,8 @@ DZ
 
 TOPS
 -- The depth of the top of each grid block
-	81*7315 81*7345 81*7375 81*7425 /
+--	81*7315 81*7345 81*7375 81*7425 /
+	81*7315 /
 
 PORO
 -- Constant porosity of 0.3 throughout all 324 grid cells
