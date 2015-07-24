@@ -28,13 +28,12 @@ OIL
 GAS
 WATER
 DISGAS
--- DISGAS must be included if the run contains dissolved gas 
--- This means that we are dealing with live oil
+-- As seen from figure 4 in Odeh, GOR is increasing with time,
+-- which means that dissolved gas is present
 
 FIELD
 
 START
--- Start date
    1 'JAN' 2015 /
 
 WELLDIMS
@@ -58,7 +57,7 @@ DX
 -- There are in total 300 cells with length 1000ft in x-direction	
    	300*1000 /
 DY
--- Same reasoning as above (in y-direction)
+-- There are in total 300 cells with length 1000ft in y-direction	
 	300*1000 /
 DZ
 -- The layers are 20, 30 and 50 ft thick, in each layer there are 100 cells
@@ -73,7 +72,7 @@ PORO
    	300*0.3 /
 
 PERMX
--- The layers have perm. 500mD (top layer), 50mD and 200mD respectivly.
+-- The layers have perm. 500mD, 50mD and 200mD, respectively.
 	100*500 100*50 100*200 /
 
 PERMY
@@ -109,25 +108,17 @@ ROCK
 -- Using values from table 1 in Odeh:
 	14.7 3E-6 /
 
--- Using values from Norne:
--- In METRIC units:
---    	277.0 4.84E-5 /
--- In FIELD units:
---      4017.55 3.34E-6 /
-
-
 SWOF
 -- Column 1: water saturation
 --   	     - this has been set to (almost) equally spaced values from 0.12 to 1
--- Column 2: corresponding water relative permeability
+-- Column 2: water relative permeability
 --   	     - generated from the Corey-type approx. formula
 --	       the coeffisient is set to 10e-5, S_{orw}=0 and S_{wi}=0.12
--- Column 3: corresponding oil relative permeability when only 
--- 	     oil and water are present
---	     - we will use the same values as in column 3 in SGOF
--- 	       this is not really correct, but since only the first 
+-- Column 3: oil relative permeability when only oil and water are present
+--	     - we will use the same values as in column 3 in SGOF.
+-- 	       This is not really correct, but since only the first 
 --	       two values are of importance, this does not really matter
--- Column 4: corresponding water-oil capillary pressure (psi) 
+-- Column 4: water-oil capillary pressure (psi) 
 
 0.12	0    		 	1	0
 0.18	4.64876033057851E-008	1	0
@@ -148,12 +139,12 @@ SWOF
 
 SGOF
 -- Column 1: gas saturation
--- Column 2: corresponding gas relative permeability
--- Column 3: corresponding oil relative permeability when oil, gas 
--- 	     and connate water are present
--- Column 4: corresponding oil-gas capillary pressure (psi)
+-- Column 2: gas relative permeability
+-- Column 3: oil relative permeability when oil, gas and connate water are present
+-- Column 4: oil-gas capillary pressure (psi)
+-- 	     - stated to be zero in Odeh's paper
 
--- Values in column 1 through 3 correspond to table 3 in Odeh's paper
+-- Values in column 1-3 are taken from table 3 in Odeh's paper:
 0	0	1	0
 0.001	0	1	0
 0.02	0	0.997	0
@@ -172,13 +163,13 @@ SGOF
 --1.00	1.0	0.000	0 /
 -- Warning from Eclipse: first sat. value in SWOF + last sat. value in SGOF
 -- 	   		 must not be greater than 1, but Eclipse still runs
--- OPM needs the sum to be excactly 1 so I added a row with gas sat. =  0.88
+-- Flow needs the sum to be excactly 1 so I added a row with gas sat. =  0.88
 -- The corresponding krg value was estimated by assuming linear rel. between
 -- gas sat. and krw. between gas sat. 0.85 and 1.00 (the last two values given)
 
 DENSITY
 -- Density (lb per ft³) at surface cond. of 
--- oil, water and gas, respectivly (in that order)
+-- oil, water and gas, respectively (in that order)
 
 -- Using values from Norne:
 -- In METRIC units:
@@ -188,12 +179,12 @@ DENSITY
 
 PVDG
 -- Column 1: gas phase pressure (psia)
--- Column 2: corresponding gas formation volume factor (rb per Mscf)
+-- Column 2: gas formation volume factor (rb per Mscf)
 -- 	     - in Odeh's paper the units are said to be given in rb per bbl, 
 -- 	       but this is assumed to be a mistake: FVF-values in Odeh's paper 
 --	       are given in rb per scf, not rb per bbl. This will be in 
 --	       agreement with conventions
--- Column 3: corresponding gas viscosity (cP)
+-- Column 3: gas viscosity (cP)
 
 -- Using values from lower right table in Odeh's table 2:
 14.700	166.666	0.008000
@@ -208,27 +199,33 @@ PVDG
 9014.7	0.38600	0.047000 /
 
 PVTO
--- Item 1: dissolved gas-oil ratio (Mscf per stb)
--- Item 2: bubble point pressure (P-bub) (psia)
--- Item 3: oil FVF for saturated oil (rb per stb)
--- Item 4: oil viscosity for saturated oil (cP)
+-- Column 1: dissolved gas-oil ratio (Mscf per stb)
+-- Column 2: bubble point pressure (psia)
+-- Column 3: oil FVF for saturated oil (rb per stb)
+-- Column 4: oil viscosity for saturated oil (cP)
 
 -- Use values from top left table in Odeh's table 2:
-	0.0010	14.7	1.0620	1.0400 /
-	0.0905	264.7	1.1500	0.9750 /
-	0.1800	514.7	1.2070	0.9100 /
-	0.3710	1014.7	1.2950	0.8300 /
-	0.6360	2014.7	1.4350	0.6950 /
-	0.7750	2514.7	1.5000	0.6410 /
-	0.9300	3014.7	1.5650	0.5940 /
-	1.2700	4014.7	1.6950	0.5100 
-		9014.7	1.5790	0.7400 /
-	1.6180	5014.7	1.8270	0.4490 
-		9014.7	1.7370	0.6310 /	
--- Need to specify data for undersaturated oil for the highest GOR. 
--- Assume linear relation between GOR and FVF at 9014.7psi for saturated
--- and undersaturated oil such that we can find a value for FVF at 9014.7psi
--- and GOR=1.618. Use same approx. for viscosity.
+0.0010	14.7	1.0620	1.0400 /
+0.0905	264.7	1.1500	0.9750 /
+0.1800	514.7	1.2070	0.9100 /
+0.3710	1014.7	1.2950	0.8300 /
+0.6360	2014.7	1.4350	0.6950 /
+0.7750	2514.7	1.5000	0.6410 /
+0.9300	3014.7	1.5650	0.5940 /
+1.2700	4014.7	1.6950	0.5100 
+	9014.7	1.5790	0.7400 /
+1.6180	5014.7	1.8270	0.4490 
+	9014.7	1.7370	0.6310 /	
+-- It is required to enter data for undersaturated oil for the highest GOR
+-- (i.e. the last row) in the PVTO table.
+-- In order to fulfill this requirement, values for oil FVF and viscosity
+-- at 9014.7psia and GOR=1.618 for undersaturated oil have been approximated:
+-- It has been assumed that there is a linear relation between the GOR
+-- and the FVF when keeping the pressure constant at 9014.7psia.
+-- From Odeh we know that (at 9014.7psia) the FVF is 2.357 at GOR=2.984
+-- for saturated oil and that the FVF is 1.579 at GOR=1.27 for undersaturated oil,
+-- so it is possible to use the assumption described above. 
+-- An equivalent approximation for the viscosity has been used.
 /
 
 SOLUTION
@@ -238,23 +235,27 @@ EQUIL
 -- Item 1: datum depth (ft)
 -- Item 2: pressure at datum depth (psia)
 -- 	   - Odeh's table 1 says that initial reservoir pressure is 
--- 	     4800 psi at 8400ft, which explains choice of item 1 and 2. 
+-- 	     4800 psi at 8400ft, which explains choice of item 1 and 2
 -- Item 3: depth of water-oil contact (ft)
 -- 	   - chosen to be directly under the reservoir
 -- Item 4: oil-water capillary pressure at the water oil contact (psi)
+-- 	   - given to be 0 in Odeh's paper
 -- Item 5: depth of gas-oil contact (ft)
 -- 	   - chosen to be directly above the reservoir
 -- Item 6: gas-oil capillary pressure at gas-oil contact (psi)
+-- 	   - given to be 0 in Odeh's paper
 -- Item 7: RSVD-table (enter true or false)
 -- Item 8: RVVD-table (enter true or false)
--- Item 9: Set to zero as this is the only value supported by OPM
+-- Item 9: Set to 0 as this is the only value supported by OPM
 
 -- Item #: 1 2    3    4 5    6 7 8 9
 	8400 4800 8450 0 8300 0 1 0 0 /
 
 RSVD
--- This table needs to be specified as item 7 in EQUIL is set to true
--- Dissolved GOR initially constant with depth through the reservoir:
+-- Dissolved GOR is initially constant with depth through the reservoir.
+-- The reason is that the initial reservoir pressure given is higher 
+---than the bubble point presssure of 4014.7psia, meaning that there is no 
+-- free gas initially present.
 8300 1.270
 8450 1.270 /
 
@@ -376,7 +377,7 @@ COMPDAT
 /
 -- Coordinates in item 2-5 are retreived from Odeh's figure 1 and 2 
 -- Item 9 is the well bore internal diameter, 
--- the radius is given to be 0.25ft in Odeh
+-- the radius is given to be 0.25ft in Odeh's paper
 
 
 WCONPROD
@@ -386,7 +387,7 @@ WCONPROD
 -- It is stated in Odeh's paper that the maximum oil prod. rate
 -- is 20 000stb per day which explains the choice of value in item 4.
 -- The items > 4 are defaulted with the exception of item  9,
--- the BHP lower limit, which is given to be 1000psia in Odeh.
+-- the BHP lower limit, which is given to be 1000psia in Odeh's paper
 
 WCONINJE
 -- Item #:1	 2	 3	 4	5      6  7
@@ -394,7 +395,7 @@ WCONINJE
 /
 -- Stated in Odeh that gas inj. rate (item 5) is 100MMscf per day
 -- BHP upper limit (item 7) should not be exceeding the highest
--- pressure in the PVT table=9014.7psia (default is 100 000psia). 
+-- pressure in the PVT table=9014.7psia (default is 100 000psia)
 
 TSTEP
 --Advance the simulater once a month for TEN years:
@@ -411,6 +412,5 @@ TSTEP
 
 --Advance the simulator once a year for TEN years:
 --10*365 /
-
 
 END
