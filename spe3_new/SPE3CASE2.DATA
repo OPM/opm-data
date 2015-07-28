@@ -31,7 +31,6 @@ DISGAS
 FIELD
 
 START
--- Start date
    1 'JAN' 2015 /
 
 WELLDIMS
@@ -46,7 +45,9 @@ WELLDIMS
    2 2 1 2 /
 
 TABDIMS
-   1 1 30 30 1 /
+-- The max number of saturation and pressure nodes in the PROPS-tables
+-- exceeds the default -> item 3 and 4 in TABDIMS must be changed
+   1* 1* 30 30 /
 
 UNIFOUT
 
@@ -59,11 +60,11 @@ DX
 -- There are in total 324 cells with length 293.3ft in x-direction	
    	324*293.3 /
 DY
--- Same reasoning as above (now in y-direction)
+-- There are in total 324 cells with length 293.3ft in y-direction	
 	324*293.3 /
 DZ
--- The layers are 30, 30, 50 and 50 ft thick, 
--- in each layer there are 81 cells
+-- The layers are 30, 30, 50 and 50 ft thick
+-- In each layer there are 81 cells
 	81*30 81*30 81*50 81*50 /
 
 TOPS
@@ -77,14 +78,14 @@ PORO
 
 PERMX
 -- The layers have horizontal (meaning x- and y-direction) permeability 
--- of 130mD, 40mD, 20mD and 150, respectivly, from top to bottom layer.
+-- of 130mD, 40mD, 20mD and 150, respectively, from top to bottom layer.
 	81*130 81*40 81*20 81*150 /
 
 PERMY
 	81*130 81*40 81*20 81*150 /
 
 PERMZ
--- z-direction permeability is 13mD, 4mD, 2mD and 15mD from top
+-- z-direction permeability is 13mD, 4mD, 2mD and 15mD, respectively, from top
 -- to bottom layer
 	81*13 81*4 81*2 81*15 /
 ECHO
@@ -95,7 +96,6 @@ PROPS
 ROCK
 -- Item 1: reference pressure (psia)
 -- Item 2: rock compressibility (psi^{-1})
--- 	   - PV (pore volume) compressibility = rock compressibility
 
 -- Using values from table 2 in Kenyon & Behie:
    	3550 4e-6 /
@@ -131,7 +131,7 @@ SGOF
 -- based on the simplistic assumption that the rel. perm. of 
 -- any phase depends only on its saturation', the Kro values 
 -- depend only on So, which is 1-Sg-Swc when only
--- oil, gas and connate water are present.
+-- oil, gas and connate water are present. Swc=0.16 (= Swi here)
 SWOF
 -- Values taken from Kenyon & Behie's table 2
 --	Sw		    Krw	0     		 Kro(w)			    Pc
@@ -161,9 +161,8 @@ SWOF
     1.00		    1.000	     0	     	     		   0.0 /
 -- The Kro values depend only on So, which is 1-Sw when
 -- only oil and water are present
--- Since we know Pcgw and Pcog=0, we can conclude that Pcwo
+-- Since we know Pcgw and since Pcog=0, we can conclude that Pcwo
 -- should be equal to Pcgw
--- Note that 0.16 is the connate water sat. Swc (= Swi here)
 
 -------------------- START OF PVTsim GENERATED VALUES -------------------------
 -- Generated with PVTsim version 21.0.0 at 03.07.2015 10:04:27
@@ -181,7 +180,7 @@ PVTW
 --       psia       rb/stb       1/psia        cP        1/psia
        3427.6      1.02629    0.30698E-05   0.31107    0.59410E-05 /
 --
--- Separator Conditions
+-- Separator Conditions (from table 3 in Kenyon & Behie's paper)
 --  Tsep(F)    Psep(psia)
 -- ---------- ----------
 --    80.00      815.00
@@ -313,8 +312,8 @@ EQUIL
 --	     The gas-water contact is at 7500ft (table 2, Kenyon & Behie)
 -- Item 6: gas-oil capillary pressure at gas-oil contact (psi)
 --	   - Kenyon & Behie say this is assumed to be zero
--- Item 7: RSVD-table (enter true or false)
--- Item 8: RVVD-table (enter true or false)
+-- Item 7: RSVD-table
+-- Item 8: RVVD-table
 -- Item 9: must set to 0 as only this is supported in OPM
 
 -- Item #: 1 	2    3    4 5    6 7 8 9
@@ -323,20 +322,16 @@ EQUIL
 SUMMARY
 
 WOPR
--- Well Oil Production Rate
   'PROD'
 /
 
 FOPR
--- Field Oil Production Rate
 
 WOPT
--- Well Oil Production Total
   'PROD'
 /
 
 FOPT
--- Field Oil Production Total
 
 BOSAT
 -- Oil Saturation in lower cell block of production well
@@ -352,31 +347,31 @@ BRS
   4 4 4 /
 /
 
--- $$$ -- In order to compare Eclipse with Flow:
--- $$$ WBHP
--- $$$   'INJ'
--- $$$   'PROD'
--- $$$ /
--- $$$ WGIR
--- $$$   'INJ'
--- $$$   'PROD'
--- $$$ /
+-- In order to compare Eclipse with Flow:
+WBHP
+  'INJ'
+  'PROD'
+/
+WGIR
+  'INJ'
+  'PROD'
+/
 -- $$$ WGIT
 -- $$$   'INJ'
 -- $$$   'PROD'
 -- $$$ /
--- $$$ WGPR
--- $$$   'INJ'
--- $$$   'PROD'
--- $$$ /
+WGPR
+  'INJ'
+  'PROD'
+/
 -- $$$ WGPT
 -- $$$   'INJ'
 -- $$$   'PROD'
 -- $$$ /
--- $$$ WOIR
--- $$$   'INJ'
--- $$$   'PROD'
--- $$$ /
+WOIR
+  'INJ'
+  'PROD'
+/
 -- $$$ WOIT
 -- $$$   'INJ'
 -- $$$   'PROD'
@@ -389,18 +384,18 @@ BRS
 -- $$$   'INJ'
 -- $$$   'PROD'
 -- $$$ /
--- $$$ WWIR
--- $$$   'INJ'
--- $$$   'PROD'
--- $$$ /
+WWIR
+  'INJ'
+  'PROD'
+/
 -- $$$ WWIT
 -- $$$   'INJ'
 -- $$$   'PROD'
 -- $$$ /
--- $$$ WWPR
--- $$$   'INJ'
--- $$$   'PROD'
--- $$$ /
+WWPR
+  'INJ'
+  'PROD'
+/
 -- $$$ WWPT
 -- $$$   'INJ'
 -- $$$   'PROD'
@@ -436,9 +431,9 @@ COMPDAT
    	 'PROD' 7 7 3 4	'OPEN'	1* 1*	2 /
 	 'INJ'	1 1 1 2	'OPEN'	1* 1*	2 /
 /
--- The coordinates item 2-5 are retrieved from figure 1 in Kenyon & Behie
+-- The coordinates in item 2-5 are retrieved from figure 1 in Kenyon & Behie
 -- Item 9 is the well bore internal diameter, 
--- the radius is given to be 1ft in Kenyon & Behie
+-- the radius is given to be 1ft in Kenyon & Behie's paper
 
 
 WCONPROD
@@ -446,8 +441,8 @@ WCONPROD
    	  'PROD' 'OPEN' 'GRAT' 2* 6200 2* 500 /
 /
 -- It is stated in Kenyon & Behie's table 3 that the production is 
--- controlled by separator gas rate of 6200Mscf per day (item 6)
--- Kenyon also says that min BHP is 500psi (item 9)
+-- controlled by a separator gas rate of 6200Mscf per day (item 6)
+-- Kenyon & Behie also say that min BHP is 500psi (item 9)
 
 WCONINJE
 -- Item #: 1	  2	 3	 4      5     6   7 
@@ -466,8 +461,7 @@ TSTEP
 31 28 31 30 31 30 31 31 30 31 30 31  
 31 28 31 30 31 30 31 31 30 31 30 31 /
 
--- For the next 5 years, item 5 in WCONINJE must be changed to 3700Mscf per day
--- as stated in Kenyon & Behie
+-- For the next 5 years, item 5 in WCONINJE must be changed to 3700Mscf per day:
 WCONINJE
 -- Item #: 1	  2	 3	 4      5     6   7 
    	  'INJ'	 'GAS'  'OPEN'  'RATE'  3700  1*  4000 /
@@ -482,7 +476,7 @@ TSTEP
 
 
 -- The cycling period ends after ten years, 
--- so we need to set item 5 in WCONINJE to 0
+-- so we need to set item 5 in WCONINJE to 0:
 WCONINJE
 -- Item #: 1	  2	 3	 4      5  6   7 
    	  'INJ'	 'GAS'  'OPEN'  'RATE'  0  1*  4000 /
