@@ -21,7 +21,6 @@ TITLE
    SPE1 - CASE 2
 
 DIMENS
--- Dimensions are 10 x 10 x 3
    10 10 3 /
 
 OIL
@@ -245,8 +244,8 @@ EQUIL
 -- 	   - chosen to be directly above the reservoir
 -- Item 6: gas-oil capillary pressure at gas-oil contact (psi)
 -- 	   - given to be 0 in Odeh's paper
--- Item 7: RSVD-table (enter true or false)
--- Item 8: RVVD-table (enter true or false)
+-- Item 7: RSVD-table
+-- Item 8: RVVD-table
 -- Item 9: Set to 0 as this is the only value supported by OPM
 
 -- Item #: 1 2    3    4 5    6 7 8 9
