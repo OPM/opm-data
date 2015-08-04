@@ -49,6 +49,10 @@ TABDIMS
 -- exceeds the default -> item 3 and 4 in TABDIMS must be changed
    1* 1* 30 30 /
 
+EQLDIMS
+/
+
+
 UNIFOUT
 
 GRID

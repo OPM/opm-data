@@ -23,6 +23,16 @@ TITLE
 DIMENS
    10 10 3 /
 
+-- The number of equilibration regions is inferred from the EQLDIMS
+-- keyword.
+EQLDIMS
+/
+
+-- The number of PVTW tables is inferred from the TABDIMS keyword;
+-- when no data is included in the keyword the default values are used.
+TABDIMS
+/
+
 OIL
 GAS
 WATER

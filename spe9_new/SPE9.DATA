@@ -63,6 +63,9 @@ TABDIMS
 -- so item 3 in this keyword must be changed:
 	1* 1* 40 /
 
+EQLDIMS
+/
+
 --NSTACK
 --	25 /
 -- Eclipse suggested increasing NSTACK
