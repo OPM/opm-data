@@ -1,0 +1,257 @@
+-- This reservoir simulation is made available under the open Database 
+-- License: http://opendatacommons.org/licenses/odbl/1.0/
+-- Individual contents of the database are licensed under the Database contents
+-- License : http://opendatacommons.org/licenses/dbcl/1.0/
+
+
+-- Copyright (C) 2015 Statoil
+
+
+-- ===============================================================================
+-- SPE 10 - MODEL 1
+-- Simulation based on the followinf SPE paper:
+-- "Tenth SPE comparative solution project: a comparison of upscaling techniques"
+-- By Mike Christie (Heriot-Wat University) and Martin Blunt (Imperial College)
+-- SPE, August 2001
+-- ===============================================================================
+
+RUNSPEC
+
+TITLE
+   SPE10:TENTH SPE COMPARATIVE SOLUTION PROJECT: A COMPARISON OF UPSCALING TECHNIQUES - MODEL 1
+
+DIMENS
+
+ 100   1   20   /
+
+
+NONNC
+
+
+OIL
+
+WATER
+
+GAS 
+
+
+FIELD
+
+
+EQLDIMS
+  1*  1*  1*  /
+
+TABDIMS
+  2   1   1*   1*   1   /
+
+WELLDIMS
+  2   20   1   2   /
+
+
+UNIFOUT
+
+START
+  1 'FEB' 1967 /
+
+NSTACK
+  25  /
+
+
+--      =================================================
+------- In theis section, the geometry of the simulation 
+------- grid and the rock perøeabilities, porosities are
+------- defined.
+--      =================================================
+GRID
+
+INIT 
+
+DX
+2000*25   /
+
+DY
+2000*25   /
+
+DZ
+2000*2.5  /
+
+INCLUDE
+   PERM_SPE10MODEL1.INC
+/
+
+EQUALS
+ 
+   PORO   0.2   1  100   1   1   1  20  /
+   TOPS   0     1  100   1   1   1  1   /
+/
+
+--  ========================================================================
+PROPS
+
+
+-- Sg             Krg              Kro            Pcgo
+SGOF
+ 0.000000	0		1.000000	0.000000
+ 0.025000	0		0.912530	0.000000
+ 0.075000	0		0.752410	0.000000
+ 0.125000	0.000007	0.611238	0.000000
+ 0.175000	0.000093	0.488020	0.000000
+ 0.225000	0.000501	0.381737	0.000000
+ 0.275000	0.001760	0.291345	0.000000
+ 0.325000	0.004800	0.215767	0.000000
+ 0.350000	0.007416	0.183188	0.000000
+ 0.375000	0.011065	0.153893	0.000000
+ 0.425000	0.022631	0.104573	0.000000
+ 0.475000	0.042315	0.066609	0.000000
+ 0.525000	0.073794	0.038746	0.000000
+ 0.575000	0.121716	0.019658	0.000000
+ 0.625000	0.191818	0.007925	0.000000
+ 0.675000	0.291038	0.001995	0.000000
+ 0.725000	0.427631	0.000103	0.000000
+ 0.775000	0.611280	0.000000	0.000000
+ 0.825000	0.853215	0.000000	0.000000
+ 0.85           1               0               0          / table 1
+ 0              0               1               0 
+ 0.050000	0		0.830041	0.000000
+ 0.100000	0.000001	0.679518	0.000000 
+ 0.150000	0.000031	0.547448	0.000000
+ 0.200000	0.000232	0.432827	0.000000
+ 0.250000	0.000977	0.334621	0.000000
+ 0.300000	0.002980	0.251773	0.000000
+ 0.350000	0.007416	0.183188	0.000000
+ 0.400000	0.016028	0.127737	0.000000
+ 0.450000	0.031250	0.084248	0.000000
+ 0.475000	0.042315	0.066609	0.000000  
+ 0.500000	0.056314	0.051496	0.000000
+ 0.550000	0.095367	0.028191	0.000000
+ 0.600000	0.153590	0.012965	0.000000
+ 0.650000	0.237305	0.004338	0.000000
+ 0.700000	0.354093	0.000668	0.000000
+ 0.750000	0.512909	0.000000	0.000000
+ 0.800000	0.724196	0.000000	0.000000
+ 0.850000	1.000000	0.000000	0.000000   /  table 2
+
+
+-- No water in the reservoir but Flow is a 3-phase simulator so water
+-- is placed below the reservoir and has no impact on simulation
+
+--Sw	Krw     Kro     Pcgo
+SWOF
+ 0      0       1       0
+ 0.200	0.0001	0.9999  0
+ 0.250	0.0069	0.8403  0
+ 0.300	0.0278	0.6944  0
+ 0.350	0.0625	0.5625  0
+ 0.400	0.1111	0.4444  0
+ 0.450	0.1736	0.3403  0
+ 0.500	0.2500	0.2500  0
+ 0.550	0.3403	0.1736  0
+ 0.600	0.4444	0.1111  0
+ 0.650	0.5625	0.0625  0
+ 0.700	0.6944	0.0278  0
+ 0.750	0.8403	0.0069  0
+ 0.800	1.0000	0.0000  0   /
+   /
+
+
+--  Oil Dens   Wat Dens   Gas Dens
+DENSITY               
+    43.68       62.430     0.0624         
+    /
+
+-- NO WATER, BUT NEEDED FOR FLOW, TAKEN FROM MODEL2
+
+-- REF PRES  Bw    WAT.COMP WAT.VISC  
+PVTW 
+   6000      1     0.000003   0.3  /
+
+-- Bo equals to one, fuids are uncompressible 
+-- Eclipse do not accept 2 identical Bo for diff pres.
+
+-- Oil Pres  Bo    MUo
+PVDO
+     95      1.0001  0.9999
+     100     1       1
+     105     0.9999  1.0001
+/
+
+
+-- Bg equals to 1 because the fluid is uncompressible
+-- Eclipse cannot accept 2 identical values of Bg for diff pres.
+ 
+-- Gas Phase  Bg    MUg
+-- pressure   
+
+PVDG
+    95        1.0001    0.009999
+    100       1         0.01   
+    105       0.9999    0.010001
+     /
+
+
+--REF. PRES    COMPRESSIBILITY - TAKEN FROM MODEL 2
+ROCK
+   6000             0.000001  
+/
+
+SOLUTION ==================================================
+
+-- Datum  Pres   WOC  Pcwoc  GOC  Pcgoc  
+
+EQUIL
+    0     100    50    0     0     0      /
+
+
+SUMMARY ===================================================
+
+RUNSUM
+
+FOPT
+FGPT
+FOPR
+FGPR
+FGIR
+FGIT
+FPR
+FOE
+FGIR
+WBHP
+ 'INJ'   
+ 'PROD'  
+/
+WPI
+ 'INJ'
+ 'PROD'
+/
+
+
+SCHEDULE ===================================================
+
+RPTRST
+   'BASIC=4' /
+
+WELSPECS
+'INJ'   G1   1   1   1.25  GAS  /    
+'PROD'  G1  100  1   1.25  OIL  /
+/
+
+COMPDAT
+'INJ'   1    1   1  20 OPEN 2*   2     /  
+'PROD'  100  1   1  20 OPEN 2*   2     /
+/
+
+WCONINJE
+'INJ'   GAS    OPEN  RATE  0.2461  1* 10000  /
+/
+
+WCONPROD
+'PROD'  OPEN   BHP    5*     95   /
+/
+
+
+TSTEP
+80*100 /
+
+END
+
+
