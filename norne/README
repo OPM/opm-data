@@ -1,0 +1,11 @@
+This directory contains the input data file and results produced by
+several simulation software packages of the Norne Benchmark Case [1].
+
+Modification: 
+(1) Region is set explicitly to FLUXNUM in MULTREGT. 
+*The default in MULTREGT is to use MULTNUM, but MULTNUM is not provided in the Norne deck. Eclipse uses FLUXNUM as a fallback in case MULTNUM is not specified. 
+The same fallback solution is on purpose not supported in OPM 
+(2) The SWOF and SGOF tables are modified to get reasonable scanning curves for 3-pt scaling in Eclipse. More precisely, values for the critical saturation is added explicitly in the tables.     
+
+[1] http://www.ipt.ntnu.no/~norne/wiki/doku.php?id=start
+
