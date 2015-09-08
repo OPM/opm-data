@@ -19,10 +19,12 @@
 -- specified in comments. This does not include data whose origin
 -- should be obvious to the reader.
 
-
-
 -- NOTE: Changes should be made to the data entered in keywords PVTW and ROCK
 -- 	 See comments under these keywords
+
+-- NOTE: This data set is currently not supported by the OPM simulator flow
+-- due to a bug in how Cartesian grids are handled. Replacing the grid with
+-- a cornerpoint grid is the current work-around.
 
 ----------------------------------------------------------------
 ------------------------- SPE 9 --------------------------------
