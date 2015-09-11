@@ -388,8 +388,8 @@ RPTRST
 
 
 -- If no resolution (i.e. case 1), the two following lines must be added:
-DRSDT
- 0 /
+--DRSDT
+-- 0 /
 -- if DRSDT is set to 0, GOR cannot rise and free gas does not 
 -- dissolve in undersaturated oil -> constant bubble point pressure
 
