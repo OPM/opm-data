@@ -415,31 +415,31 @@ WELSPECS
 
 -- #: 1	       2   3  4 5	 6	7  
  'INJE1 '  'P'  24 25  9110 'WATER'	60   /
- 'PROD2 '  'P'   5  1  9110 'OIL'	60   /
- 'PROD3 '  'P'   8  2  9110 'OIL'	60   /
- 'PROD4 '  'P'  11  3  9110 'OIL'	60   /
- 'PROD5 '  'P'  10  4  9110 'OIL'	60   /
- 'PROD6 '  'P'  12  5  9110 'OIL'	60   /
- 'PROD7 '  'P'   4  6  9110 'OIL'	60   /
- 'PROD8 '  'P'   8  7  9110 'OIL'	60   /
- 'PROD9 '  'P'  14  8  9110 'OIL'	60   /
- 'PROD10'  'P'  11  9  9110 'OIL'	60   /
- 'PROD11'  'P'  12 10  9110 'OIL'	60   /
- 'PROD12'  'P'  10 11  9110 'OIL'	60   /
- 'PROD13'  'P'   5 12  9110 'OIL'	60   /
- 'PROD14'  'P'   8 13  9110 'OIL'	60   /
- 'PROD15'  'P'  11 14  9110 'OIL'	60   /
- 'PROD16'  'P'  13 15  9110 'OIL'	60   /
- 'PROD17'  'P'  15 16  9110 'OIL'	60   /
- 'PROD18'  'P'  11 17  9110 'OIL'	60   /
- 'PROD19'  'P'  12 18  9110 'OIL'	60   /
- 'PROD20'  'P'   5 19  9110 'OIL'	60   /
- 'PROD21'  'P'   8 20  9110 'OIL'	60   /
- 'PROD22'  'P'  11 21  9110 'OIL'	60   /
- 'PROD23'  'P'  15 22  9110 'OIL'	60   /
- 'PROD24'  'P'  12 23  9110 'OIL'	60   /
- 'PROD25'  'P'  10 24  9110 'OIL'	60   /
- 'PROD26'  'P'  17 25  9110 'OIL'	60   /
+ 'PRODU2 '  'P'   5  1  9110 'OIL'	60   /
+ 'PRODU3 '  'P'   8  2  9110 'OIL'	60   /
+ 'PRODU4 '  'P'  11  3  9110 'OIL'	60   /
+ 'PRODU5 '  'P'  10  4  9110 'OIL'	60   /
+ 'PRODU6 '  'P'  12  5  9110 'OIL'	60   /
+ 'PRODU7 '  'P'   4  6  9110 'OIL'	60   /
+ 'PRODU8 '  'P'   8  7  9110 'OIL'	60   /
+ 'PRODU9 '  'P'  14  8  9110 'OIL'	60   /
+ 'PRODU10'  'P'  11  9  9110 'OIL'	60   /
+ 'PRODU11'  'P'  12 10  9110 'OIL'	60   /
+ 'PRODU12'  'P'  10 11  9110 'OIL'	60   /
+ 'PRODU13'  'P'   5 12  9110 'OIL'	60   /
+ 'PRODU14'  'P'   8 13  9110 'OIL'	60   /
+ 'PRODU15'  'P'  11 14  9110 'OIL'	60   /
+ 'PRODU16'  'P'  13 15  9110 'OIL'	60   /
+ 'PRODU17'  'P'  15 16  9110 'OIL'	60   /
+ 'PRODU18'  'P'  11 17  9110 'OIL'	60   /
+ 'PRODU19'  'P'  12 18  9110 'OIL'	60   /
+ 'PRODU20'  'P'   5 19  9110 'OIL'	60   /
+ 'PRODU21'  'P'   8 20  9110 'OIL'	60   /
+ 'PRODU22'  'P'  11 21  9110 'OIL'	60   /
+ 'PRODU23'  'P'  15 22  9110 'OIL'	60   /
+ 'PRODU24'  'P'  12 23  9110 'OIL'	60   /
+ 'PRODU25'  'P'  10 24  9110 'OIL'	60   /
+ 'PRODU26'  'P'  17 25  9110 'OIL'	60   /
 /
 
 COMPDAT
@@ -457,31 +457,31 @@ COMPDAT
 -- #: 1	      	     2  3	 4    5	  6	7	8	9 
 
      'INJE1'        24 25	11   15	'OPEN'	1*	1*	1 /
-     'PROD2'        5  1	 2    4	'OPEN'	1*	1*	1 /
-     'PROD3'        8  2	 2    4	'OPEN'	1*	1*	1 /
-     'PROD4'       11  3	 2    4	'OPEN'	1*	1*	1 /
-     'PROD5'       10  4	 2    4	'OPEN'	1*	1*	1 /
-     'PROD6'       12  5	 2    4	'OPEN'	1*	1*	1 /
-     'PROD7'        4  6	 2    4	'OPEN'	1*	1*	1 /
-     'PROD8'        8  7	 2    4	'OPEN'	1*	1*	1 /
-     'PROD9'       14  8	 2    4	'OPEN'	1*	1*	1 /
-     'PROD10'      11  9	 2    4	'OPEN'	1*	1*	1 /
-     'PROD11'      12 10	 2    4	'OPEN'	1*	1*	1 /
-     'PROD12'      10 11	 2    4	'OPEN'	1*	1*	1 /
-     'PROD13'       5 12	 2    4	'OPEN'	1*	1*	1 /
-     'PROD14'       8 13	 2    4	'OPEN'	1*	1*	1 /
-     'PROD15'      11 14	 2    4	'OPEN'	1*	1*	1 /
-     'PROD16'      13 15	 2    4	'OPEN'	1*	1*	1 /
-     'PROD17'      15 16	 2    4	'OPEN'	1*	1*	1 /
-     'PROD18'      11 17	 2    4	'OPEN'	1*	1*	1 /
-     'PROD19'      12 18	 2    4	'OPEN'	1*	1*	1 /
-     'PROD20'       5 19	 2    4	'OPEN'	1*	1*	1 /
-     'PROD21'       8 20	 2    4	'OPEN'	1*	1*	1 /
-     'PROD22'      11 21	 2    4	'OPEN'	1*	1*	1 /
-     'PROD23'      15 22	 2    4	'OPEN'	1*	1*	1 /
-     'PROD24'      12 23	 2    4	'OPEN'	1*	1*	1 /
-     'PROD25'      10 24	 2    4	'OPEN'	1*	1*	1 /
-     'PROD26'      17 25	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU2'        5  1	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU3'        8  2	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU4'       11  3	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU5'       10  4	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU6'       12  5	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU7'        4  6	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU8'        8  7	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU9'       14  8	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU10'      11  9	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU11'      12 10	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU12'      10 11	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU13'       5 12	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU14'       8 13	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU15'      11 14	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU16'      13 15	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU17'      15 16	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU18'      11 17	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU19'      12 18	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU20'       5 19	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU21'       8 20	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU22'      11 21	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU23'      15 22	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU24'      12 23	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU25'      10 24	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU26'      17 25	 2    4	'OPEN'	1*	1*	1 /
 /
 
 WCONINJE
@@ -498,7 +498,7 @@ WCONPROD
 -- is set to 1000psia (with a ref. depth of 9110ft
 -- for this pressure in all wells):
 --   #:   1           2      3     4       9
-     	 'PROD*' 'OPEN' 'ORAT' 1500 4* 1000  /
+     	 'PRODU*' 'OPEN' 'ORAT' 1500 4* 1000  /
 -- Here, the wildcard '*' has been used to indicate that this applies
 -- to all producers; PRODU1-PRODU25.
 /
@@ -511,7 +511,7 @@ TSTEP
 -- to 100 STBO per D:
 WCONPROD
 --   #:   1           2      3     4      9
-     	 'PROD*' 'OPEN' 'ORAT' 100 4* 1000 /
+     	 'PRODU*' 'OPEN' 'ORAT' 100 4* 1000 /
 /
 
 
@@ -522,7 +522,7 @@ TSTEP
 -- back to 1500 STBO per D:
 WCONPROD
 --   #:   1           2      3     4       9
-     	 'PROD*' 'OPEN' 'ORAT' 1500 4* 1000 /
+     	 'PRODU*' 'OPEN' 'ORAT' 1500 4* 1000 /
 /
 
 
