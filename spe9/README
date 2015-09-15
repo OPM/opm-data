@@ -1,0 +1,12 @@
+
+CPG_SPE9.DATA: is the data file for SPE9 with a Corner Point Geometry 
+
+TOPVALUES file is not necessary for CP geometry so it has been removed.
+
+Changes implemeted from last spe9_new files:
+- In keyword COMPDAT item 8 (transmissibility factors) must be entered to get a match between Eclipse and Flow runs. This is being corrected and default values are used.
+
+
+- Last line of PVTO is calculated @ 4600 psi, not 5000psi, because the SPE paper specify a way to calculate Bo 1000psi over Psta which is 3600psi (during simulation, P does not exceed 3600 psi).
+
+- The grid has been made on Excel.
