@@ -5,48 +5,38 @@
 SUMMARY_X=summary.x
 
 OUTPUT=norne-wells
-
-OPTS="WBHP WOPR WGPR WWPR"
+DIRS="ECL.2014.2 OPM"
 DECK=NORNE_ATW2013
 
-DIRS="ECL.2014.2 OPM"
-WELLS="
-B-1AH
-B-1BH
-B-1H
-B-2H
-B-3H
-B-4AH
-B-4BH
-B-4DH
-B-4H
-C-1H
-C-2H
-C-3H
-C-4AH
-C-4H
-D-1CH
-D-1H
-D-2H
-D-3AH
-D-3BH
-D-3H
-D-4AH
-D-4H
-E-1H
-E-2AH
-E-2H
-E-3AH
-E-3BH
-E-3CH
-E-3H
-E-4AH
-E-4H
-F-1H
-F-2H
-F-3H
-F-4H
-K-3H"
+# if empty all options will be plotted
+OPTS="WBHP WOPR WGPR WWPR"
+
+ALLWELLS=
+ALLOPTS=$OPTS
+for DIR in $DIRS; do
+  ALLWELLS=`$SUMMARY_X --list $DIR/$DECK`
+done
+
+WELLS=
+for W in $ALLWELLS; do
+  WELL=`echo $W | grep WBHP`
+
+  if [ "$ALLOPTS" == "" ]; then
+    OPT=`echo $W | cut -d ":" -f 1`
+
+    CONTAINED=`echo $OPTS | grep $OPT`
+    if [ "$CONTAINED" == "" ]; then
+      OPTS="$OPTS $OPT"
+      echo "Found option $OPT"
+    fi
+  fi
+
+  if [ "$WELL" != "" ] ; then
+    WELL=`echo $WELL | cut -d ":" -f 2`
+    WELLS="$WELLS $WELL"
+    echo "Found well $WELL"
+  fi
+done
 
 # create a file for each well for all specified wells
 for DIR in $DIRS; do
@@ -80,7 +70,7 @@ for WELL in $WELLS ; do
     echo "set grid" >> $PLOTFILE
     PLOTS=
     LC=1
-    LW=4
+    LW=3
     for DIR in $DIRS; do
       if [ "$PLOTS" != "" ]; then
         PLOTS="$PLOTS,"
