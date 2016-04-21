@@ -118,5 +118,8 @@ dvipdf article $OUTPUT.pdf
 # remove temporary files
 rm -f $WELLLISTEX
 rm -f $PLOTFILE
+for DIR in $DIRS; do
+  rm -f $DIR/*.gnu
+done
 rm -f $WELLTEX $OUTPUT.aux $OUTPUT.log $OUTPUT.dvi
 find . -name "well-*.eps" -exec rm {} \;
