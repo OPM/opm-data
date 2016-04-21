@@ -5,7 +5,7 @@
 SUMMARY_X=summary.x
 
 OUTPUT=norne-wells
-DIRS="ECL.2014.2 OPM/2016.03.17"
+DIRS="ECL.2014.2 OPM/OPM-reference-simulation"
 DECK=NORNE_ATW2013
 
 # if empty all options will be plotted
