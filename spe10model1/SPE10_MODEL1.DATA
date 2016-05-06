@@ -61,7 +61,7 @@ START
 
 --      =================================================
 ------- In this section, the geometry of the simulation 
-------- grid and the rock perøeabilities, porosities are
+------- grid and the rock permeabilities, porosities are
 ------- defined.
 --      =================================================
 GRID
