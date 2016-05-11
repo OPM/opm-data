@@ -1,0 +1,587 @@
+-- This reservoir simulation deck is made available under the Open Database
+-- License: http://opendatacommons.org/licenses/odbl/1.0/. Any rights in
+-- individual contents of the database are licensed under the Database Contents
+-- License: http://opendatacommons.org/licenses/dbcl/1.0/
+
+-- Copyright (C) 2015 Statoil
+
+-- This simulation is based on the data given in 
+-- 'Ninth SPE Comparative Solution Project:
+-- A Reexamination of Black-Oil Simulation',
+-- by J.E. Killough,
+-- Journal of Petroleum Technology, 1995
+
+-- A dataset from one of the participants was supplied to the 
+-- participants of SPE 9. Some of the information in this
+-- dataset has been used here as well. 
+
+-- The origin of information or data used in this simulation is 
+-- specified in comments. This does not include data whose origin
+-- should be obvious to the reader.
+
+
+
+-- NOTE: Changes should be made to the data entered in keywords PVTW and ROCK
+-- 	 See comments under these keywords
+
+----------------------------------------------------------------
+------------------------- SPE 9 --------------------------------
+----------------------------------------------------------------
+
+RUNSPEC
+
+TITLE
+	SPE 9
+
+DIMENS
+	24 25 15 /
+OIL
+WATER
+GAS
+DISGAS
+-- From figure 7 in Killough's paper it is evident 
+-- that GOR is increasing with time, meaning
+-- that there must be dissolved gas present
+
+FIELD
+
+START
+	1 'JAN' 2015 /
+
+WELLDIMS
+-- Item 1: maximum number of wells in the model
+-- 	   - there are 26 wells in SPE9; 1 injector and 25 producers
+-- Item 2: maximum number of grid blocks connected to any one well
+-- 	   - the injector is completed in 5 layers
+-- Item 3: maximum number of groups in the model
+-- 	   - only one group in model
+-- Item 4: maximum number of wells in any one group
+-- 	   - this can definitetly not be more than 26 
+	26 5 10 26 /
+TABDIMS
+-- The number of rows in SWOF exceeds the default maximum,
+-- so item 3 in this keyword must be changed:
+	1* 1* 40 /
+
+EQLDIMS
+/
+
+--NSTACK
+--	25 /
+-- Eclipse suggested increasing NSTACK
+
+UNIFOUT
+
+
+GRID
+-- Killough says 'the grid was in conventional rectangular 
+-- coordinates without corner point geometry or local grid refinements'
+
+
+NOECHO
+
+INIT
+
+INCLUDE
+	'SPE9.GRDECL' /
+
+PORO
+-- Porosity in each level is contant
+-- The values are specified in table 1 in Killough's paper
+   	600*0.087
+	600*0.097
+	600*0.111
+	600*0.16
+	600*0.13
+	600*0.17
+	600*0.17
+	600*0.08
+	600*0.14
+	600*0.13
+	600*0.12
+	600*0.105
+	600*0.12
+	600*0.116
+	600*0.157 /
+
+-- PERMX, PERMY & PERMZ
+INCLUDE
+	PERMVALUES.DATA /
+
+ECHO
+
+PROPS
+
+PVTW
+-- Item 1: pressure reference (psia)
+-- Item 2: water FVF (rb per bbl or rb per stb)
+-- Item 3: water compressibility (psi^{-1})
+-- Item 4: water viscosity (cp)
+-- Item 5: water 'viscosibility' (psi^{-1})
+
+-- Item 1 and 2 are stated in Killough, and item 5 is assumed = zero
+-- Item 3 and 4 are taken from SPE2
+  	3600 1.0034 3e-6 0.96 0 /
+
+--NOTE:
+--   a)	It is not explicitly stated in Killough that it is okay to use SPE2-values here. 
+--   b)	I am not 100% sure if the given compressibility value is at ref. pres. 3600psia.
+--   c)	Item 3 and 4 can probably be explained on the basis of Killough's dataset. In 
+-- 	order to do that I need info about keywords in VIP
+
+ROCK
+-- Item 1: reference pressure (psia)
+-- Item 2: rock compressibility (psi^{-1})
+
+-- Using values from SPE2:
+   	3600 4e-6 /
+
+-- NOTE:
+--   a) It is not explicitly stated in Killough that it is okay to use SPE2-values here.
+--   a) I am not 100% sure if the given compressibility value is at 3600psia.
+--   b) 'Comp. Methods for Multiphase Flow in Porous Media' states
+--      that rock compr. is 1e-6 inverse psi. This is probably correct, as
+--   	I think this is based on Killough's dataset - to be sure, I need 
+-- 	more info about keywords in VIP.
+
+DENSITY
+-- Density (lb per ft³) at surface cond. of 
+-- oil, water and gas, respectively (in that order)
+
+-- The values for oil and water are given by Killough to
+-- be 0.7206 and 1.0095 gm per cc, or equivalently 
+-- 44.9856 and 63.0210 lb per ft³
+
+-- A gas density of 0.07039 lb per ft³ was calculated using formula at 
+-- petrowiki.org/Calculating_gas_properties:
+-- (28.967*Specific gravity*pressure)/(Z-factor*gas constant*temperature) 
+-- with the values given in Killough's table 2 at 14.7 psia (1 atm).
+-- A temperature of 15C=59F was also used in the above formula.
+	44.9856 63.0210 0.07039 /
+	
+PVTO
+-- Column 1: dissolved gas-oil ratio (Mscf per stb)
+-- Column 2: bubble point pressure for oil (psia)
+-- Column 3: oil FVF for saturated oil (rb per stb)
+-- Column 4: oil viscosity for saturated oil (cP)
+
+-- Using values from table 2 in Killough's paper:
+0  	 14.7	 1	 1.20 /
+0.165	 400	 1.0120	 1.17 /
+0.335	 800	 1.0255	 1.14 /
+0.500	 1200	 1.0380	 1.11 /
+0.665	 1600	 1.0510	 1.08 /
+0.828	 2000	 1.0630	 1.06 /
+0.985	 2400	 1.0750	 1.03 /
+1.130	 2800	 1.0870	 1.00 /
+1.270	 3200	 1.0985	 0.98 /
+1.390	 3600	 1.1100	 0.95 /
+1.500	 4000	 1.1200	 0.94 
+         4600    1.1089  0.94 /
+--	 5000	 1.1189	 0.94 /
+/
+-- Comment in regards to the last row in PVTO:
+--   Killough says that 'at 1000psi above the saturation
+--   pressure the Bo is 0.999 times that of the Bo at Psat'
+--   which means that the FVF (i.e. Bo) at 4600psia is 0.999*0.1100=1.1089
+--   Killough also says that 'the oil viscosity does not 
+--   increase with increasing pressure in undersaturated conditions'
+--   which explains why the oil viscosity is 0.94.
+
+PVDG
+-- Column 1: gas phase pressure (psia)
+-- Column 2: gas formation volume factor (rb per Mscf)
+-- 	     - This is calculated using formula:
+--	       Bg=5.03676*Z*temperature(R)/pressure(psia) rb/Mscf
+--	       where a constant temperature=100F=559.67R has been used because
+--	       that is the initial reservoir temperature according to Killough's paper
+--	       The above formula is retrieved from 
+--	       petrowiki.org/Gas_formation_volume_factor_and_density
+-- Column 3: gas viscosity (cP)
+
+-- Using values from table 2 in Killough's paper:
+   14.7	 191.7443 	0.0125
+   400    5.8979	0.0130
+   800    2.9493	0.0135
+   1200	  1.9594	0.0140
+   1600	  1.4695	0.0145
+   2000	  1.1797	0.0150
+   2400	  0.9796	0.0155
+   2800	  0.8397	0.0160
+   3200	  0.7398	0.0165
+   3600	  0.6498	0.0170
+   4000	  0.5849	0.0175 /
+
+
+SGOF
+-- Column 1: gas saturation
+-- Column 2: gas relative permeability
+-- Column 3: oil relative permeability when oil, gas and connate water are present
+-- Column 4: corresponding oil-gas capillary pressure (psi)
+
+-- Using values from table 3 in Killough's paper:
+0  	  0	     1		0
+0.04	  0	     0.6	0.2
+0.1	  0.022	     0.33	0.5
+0.2	  0.1	     0.1	1.0
+0.3	  0.24	     0.02	1.5
+0.4	  0.34	     0		2.0
+0.5	  0.42	     0		2.5
+0.6	  0.5	     0		3.0
+0.7	  0.8125     0		3.5
+0.84891   0.9635     0		3.82 /
+--0.88491 1	     0		3.9  /
+-- Comment in regards to the last row in SGOF:
+--   Changes have been made so that the last row
+--   is at a gas sat. of Sg=1-Swc=1-0.151090=0.84891
+--   The Krg and Pcog values corresponding to Sg=0.84891
+--   have been approximated by assuming linear relation between
+--   Krg/Pcog and Sg in the range Sg=0.7 to Sg=0.88491
+
+SWOF
+-- Column 1: water saturation
+-- Column 2: water relative permeability
+-- Column 3: oil relative permeability when only oil and water are present
+-- Column 4: corresponding water-oil capillary pressure (psi) 
+
+-- These values are taken from Killough's dataset:
+0.151090     0.0     1.0     400.0
+0.151230     0.0     0.99997 359.190
+0.151740     0.0     0.99993 257.920
+0.152460     0.0     0.99991 186.310
+0.156470     0.0     0.999510 79.060
+0.165850     0.0     0.996290 40.010
+0.178350     0.0     0.991590 27.930
+0.203350 0.000010    0.978830 20.400
+0.253350 0.000030    0.943730 15.550
+0.350000 0.000280    0.830230 11.655
+0.352000 0.002292    0.804277  8.720
+0.354000 0.004304    0.778326  5.947
+0.356000 0.006316    0.752374  3.317
+0.358000 0.008328    0.726422  1.165
+0.360000 0.010340    0.700470  0.463
+0.364395 0.015548    0.642258 -0.499
+0.368790 0.020756    0.584046 -1.139
+0.370000 0.022190    0.568020 -1.194
+0.380000 0.035890    0.434980 -1.547
+0.400000 0.069530    0.171430 -1.604
+0.433450 0.087900    0.125310 -1.710
+0.461390 0.104910    0.094980 -1.780
+0.489320 0.123290    0.070530 -1.860
+0.517250 0.143030    0.051130 -1.930
+0.573120 0.186590    0.024640 -2.070
+0.601060 0.210380    0.016190 -2.130
+0.656930 0.261900    0.005940 -2.260
+0.712800 0.318650    0.001590 -2.380
+0.811110 0.430920    0.000020 -2.600
+0.881490 0.490000    0.000000 -2.750 /
+
+
+-- These values are approximated by reading off the graphs
+-- in figure 1 and 2 in Killough's paper:
+-- $$$ 0.18	 0	1     21
+-- $$$ 0.25	 0	0.95  16
+-- $$$ 0.34	 0.07	0.5   12
+-- $$$ 0.345	 0.08	0.4    9
+-- $$$ 0.35	 0.09	0.3    6
+-- $$$ 0.355	 0.095	0.2    0
+-- $$$ 0.36	 0.1	0.19  -2
+-- $$$ 0.75	 0.32	0.02  -2.5
+-- $$$ 0.88149	 0.5	0     -3 /
+
+
+SOLUTION
+
+EQUIL
+-- Item 1: datum depth (ft)
+-- Item 2: pressure at datum depth (psia)
+-- 	   - Killough says initial oil phase pressure is
+--	   - 3600psia at depth 9035ft
+-- Item 3: depth of water-oil contact (ft)
+-- 	   - Given to be 9950 ft in Killough's paper
+-- Item 4: oil-water capillary pressure at the water oil contact (psi)
+-- 	   - Given to be 0 in Killough's dataset
+-- 	   - 0 in SPE2
+-- Item 5: depth of gas-oil contact (ft)
+--	   - 8800ft in Killough's dataset
+-- Item 6: gas-oil capillary pressure at gas-oil contact (psi)
+-- 	   - Given to be 0 in Killough's dataset
+-- 	   - 0 in SPE2
+-- Item 7: RSVD-table
+-- Item 8: RVVD-table
+-- Item 9: OPM only supports item 9 equal to zero.
+
+--      #: 1    2    3    4 5    6 7 8 9
+   	   9035 3600 9950 0 8800 0 1 0 0 /
+
+
+RSVD
+-- The initial oil phase pressure is given to be 3600psia, at
+-- which the GOR is 1.39 Mscf per stb according to Killough's table 2.
+-- Since there is no free gas initially present*, the oil
+-- phase (with dissolved gas) must initially have a constant GOR as
+-- a function of depth through the reservoir (at the given pressure)
+	8800 1.39
+	9950 1.39 /
+-- *)
+--   This is explicitly stated in Killough's paper.
+--   Note that the initial oil phase pressure is the same as
+--   the saturation (bubble point) pressure of the oil.
+--   This should also imply that there is no free gas initially present.
+--   Since there is no free gas initially present, the gas-oil
+--   contact should lie above the reservoir, which it does (EQUIL, item 5)
+
+SUMMARY
+
+
+-- Killough's figure 7:
+FGOR
+-- Killough's figure 8:
+FOPR
+-- Killough's figure 9:
+FGPR
+-- Killough's figure 10:
+FWPR
+-- Killough's figure 11:
+BPR
+ 1 1 1 /
+/
+-- Killough's figure 12:
+BGSAT
+ 1 13 1 /
+/
+-- Killough's figure 13:
+BWSAT
+ 10 25 15 /
+/
+-- Killough's figure 14:
+--WWIR
+-- 'INJE1' /
+-- Killough's figure 15:
+--WOPR
+-- 'PRODU21' /
+
+-- In order to compare Eclipse with Flow:
+WBHP
+/
+WGIR
+/
+--WGIT
+--/
+WGPR
+/
+WGPT
+/
+WOIR
+/
+--WOIT
+--/
+WOPR
+/
+WOPT
+/
+WWIR
+/
+--WWIT
+--/
+WWPR
+/
+WWPT
+/
+
+WOPP
+/
+WWPP
+/
+WGPP
+/
+
+SCHEDULE
+
+RPTRST
+	'BASIC=2' /
+
+TUNING
+ 4.0  60.0  0.1    /
+                   /
+  12 2 15          /
+
+
+WELSPECS
+-- Column 3: I-value of well head or heel
+-- Column 4: J-value of well head or heel
+-- 	     - these coordinates are listed in Killough's dataset
+-- Column 5: ref. depth of BHP (ft)
+--           - stated in the middle of the top perforated cell
+-- 	     - not anymore stated to be 9110ft in Killough
+-- Column 6: preferred phase for well
+-- 	     - should be water for injector and oil for producers
+-- Column 7: drainage radius for calc. of productivity or 
+--           injectivity indices (ft)
+--	     - stated to be 60ft in Killough
+
+-- #: 1	       2   3  4 5	 6	7  
+ 'INJE1 '  'I'  24 25  9110 'WATER'	60   /
+ 'PRODU2 '  'P'   5  1  9110 'OIL'	60   /
+ 'PRODU3 '  'P'   8  2  9110 'OIL'	60   /
+ 'PRODU4 '  'P'  11  3  9110 'OIL'	60   /
+ 'PRODU5 '  'P'  10  4  9110 'OIL'	60   /
+ 'PRODU6 '  'P'  12  5  9110 'OIL'	60   /
+ 'PRODU7 '  'P'   4  6  9110 'OIL'	60   /
+ 'PRODU8 '  'P'   8  7  9110 'OIL'	60   /
+ 'PRODU9 '  'P'  14  8  9110 'OIL'	60   /
+ 'PRODU10'  'P'  11  9  9110 'OIL'	60   /
+ 'PRODU11'  'P'  12 10  9110 'OIL'	60   /
+ 'PRODU12'  'P'  10 11  9110 'OIL'	60   /
+ 'PRODU13'  'P'   5 12  9110 'OIL'	60   /
+ 'PRODU14'  'P'   8 13  9110 'OIL'	60   /
+ 'PRODU15'  'P'  11 14  9110 'OIL'	60   /
+ 'PRODU16'  'P'  13 15  9110 'OIL'	60   /
+ 'PRODU17'  'P'  15 16  9110 'OIL'	60   /
+ 'PRODU18'  'P'  11 17  9110 'OIL'	60   /
+ 'PRODU19'  'P'  12 18  9110 'OIL'	60   /
+ 'PRODU20'  'P'   5 19  9110 'OIL'	60   /
+ 'PRODU21'  'P'   8 20  9110 'OIL'	60   /
+ 'PRODU22'  'P'  11 21  9110 'OIL'	60   /
+ 'PRODU23'  'P'  15 22  9110 'OIL'	60   /
+ 'PRODU24'  'P'  12 23  9110 'OIL'	60   /
+ 'PRODU25'  'P'  10 24  9110 'OIL'	60   /
+ 'PRODU26'  'P'  17 25  9110 'OIL'	60   /
+/
+
+COMPDAT
+-- Column 2: I-value of connecting grid block
+-- Column 3: J-value of connecting grid block
+-- Column 4: K-value of upper connecting grid block
+-- Column 5: K-value of lower connecting grid block
+-- 	     - these coordinates are listed in Killough's dataset
+-- Column 9: well bore diameter
+-- 	     - Killough says radius is 0.5ft
+
+--Item 8 must be entered in order to get a match between Eclipse and Flow
+--No match if item 8 is defaulted
+
+-- #: 1	      	     2  3	 4    5	  6	7	8	9 
+
+     'INJE1'        24 25	11   15	'OPEN'	1*	1*	1 /
+     'PRODU2'        5  1	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU3'        8  2	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU4'       11  3	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU5'       10  4	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU6'       12  5	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU7'        4  6	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU8'        8  7	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU9'       14  8	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU10'      11  9	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU11'      12 10	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU12'      10 11	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU13'       5 12	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU14'       8 13	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU15'      11 14	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU16'      13 15	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU17'      15 16	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU18'      11 17	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU19'      12 18	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU20'       5 19	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU21'       8 20	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU22'      11 21	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU23'      15 22	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU24'      12 23	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU25'      10 24	 2    4	'OPEN'	1*	1*	1 /
+     'PRODU26'      17 25	 2    4	'OPEN'	1*	1*	1 /
+/
+-- The guiderates are calculated using well potentials
+-- i.e WGRUPCON is not specified/
+--WGRUPCON
+--'PRODU2' 'YES' 2 'OIL' /
+--'PRODU3' 'YES' 2 'OIL' /
+--'PRODU4' 'YES' 2 'OIL' /
+--'PRODU5' 'YES' 2 'OIL' /
+--'PRODU6' 'YES' 2 'OIL' /
+--'PRODU7' 'YES' 1 'OIL' /
+--'PRODU8' 'YES' 1 'OIL' /
+--'PRODU9' 'YES' 1 'OIL' /
+--'PRODU10' 'YES' 1 'OIL' /
+--'PRODU11' 'YES' 1 'OIL' /
+--'PRODU12' 'YES' 1 'OIL' /
+--'PRODU13' 'YES' 1 'OIL' /
+--'PRODU14' 'YES' 1 'OIL' /
+--'PRODU15' 'YES' 1 'OIL' /
+--'PRODU16' 'YES' 1 'OIL' /
+--'PRODU17' 'YES' 1 'OIL' /
+--'PRODU18' 'YES' 1 'OIL' /
+--'PRODU19' 'YES' 1 'OIL' /
+--'PRODU20' 'YES' 1 'OIL' /
+--'PRODU21' 'YES' 1 'OIL' /
+--'PRODU22' 'YES' 1 'OIL' /
+--'PRODU23' 'YES' 1 'OIL' /
+--'PRODU24' 'YES' 1 'OIL' /
+--'PRODU25' 'YES' 1 'OIL' /
+--'PRODU26' 'YES' 1 'OIL' /
+--/
+
+WCONINJE
+-- Killough says the water injector is set to a max rate of
+-- 5000 STBW per D with a max BHP of 4000psia at a reference 
+-- depth of 9110ft subsea:
+--   #:  1	    2       3      4     5       7
+	'INJE1' 'WATER' 'OPEN' 'RATE' 5000 1* 4000 /
+/
+
+WCONPROD
+-- Killough says the max oil rate for all producers is set to 
+-- 1500 STBO per D at time zero and that the min flowing BHP
+-- is set to 1000psia (with a ref. depth of 9110ft
+-- for this pressure in all wells):
+--   #:   1           2      3     4       9
+     	 'PRODU*' 'OPEN' 'ORAT' 1500 4* 1000  /
+-- Here, the wildcard '*' has been used to indicate that this applies
+-- to all producers; PRODU1-PRODU25.
+/
+
+
+TSTEP
+30*10 /
+
+
+-- At 300 days, the max oil rate for all producers is lowered
+-- to 100 STBO and all wells set to GRUP controll:
+
+WCONPROD
+--   #:   1           2      3     4      9
+     	 'PRODU*' 'OPEN' 'GRUP' 100 4* 1000 /
+/
+
+-- The total rates is set to 1500 STBO 
+GCONPROD
+--      oil   water  gas
+   'P'    'ORAT'  1500 /
+/
+
+
+TSTEP
+6*10 /
+
+
+-- At 360 days, the max oil rate for all producers is changed
+-- back to 1500 STBO per D:
+WCONPROD
+--   #:   1           2      3     4       9
+     	 'PRODU*' 'OPEN' 'ORAT' 1500 4* 1000 /
+/
+
+-- GCONPROD must be set to 'NONE' for FLOW to not throw
+GCONPROD
+--      oil   water  gas
+   'P'    'NONE'  1500  /
+/
+
+
+TSTEP
+54*10 /
+-- End of simulation at 900 days
+
+END
+
+
+
