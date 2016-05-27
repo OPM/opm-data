@@ -24,10 +24,8 @@ DIMENS
 
  100   1   20   /
 
-
 CPR
 /
-
 
 NONNC
 
@@ -58,7 +56,6 @@ START
   1 'JAN' 1967 /
 
 
-
 --      =================================================
 ------- In this section, the geometry of the simulation 
 ------- grid and the rock permeabilities, porosities are
@@ -66,29 +63,23 @@ START
 --      =================================================
 GRID
 
+NOECHO
+
 INIT 
 
+INCLUDE
+	'SPE10MODEL1.GRDECL' /
 
-DX
-2000*25   /
-
-DY
-2000*25   /
-
-DZ
-2000*2.5  /
 
 PORO
-2000*0.2  /
-
-TOPS 
-100*0     /  
+2000*0.2  /  
 
 
 INCLUDE
-   PERM_SPE10MODEL1.INC
+   PERM_SPE10MODEL1.INC 
 /
 
+ECHO
 --  ========================================================================
 PROPS
 
@@ -184,7 +175,7 @@ PVDO
      10000   0.999990    1.000010
 /
 
--- Bg equals to 178.1076 because the fluid is uncompressible (unit: rb/Mscf)
+-- Bg equals to 1 because the fluid is uncompressible, in field unit Bg equals 178
 -- Eclipse cannot accept 2 identical values of Bg for diff pres.
  
 -- Gas Phase  Bg    MUg
@@ -254,7 +245,7 @@ RPTRST
 TUNING
    /
    /
-   2*  500 /
+   2*  500 1* 25 /
 
 
 WELSPECS
@@ -272,11 +263,685 @@ WCONPROD
 /
 
 WCONINJE
-'INJ'   GAS    OPEN  RATE  34.61  1* 10000  /
+'INJ'   GAS   OPEN  RATE  34.61 1* 10000  /
 /
 
 TSTEP
-800*10 /
+323*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+5*10 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 100 /
+/
+
+TSTEP
+50 /
+
+WCONPROD
+'PROD' OPEN BHP 5* 95 /
+/
+
+TSTEP
+2*10 /
+
+
 
 END
 
