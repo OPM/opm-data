@@ -19,7 +19,7 @@ done
 
 WELLS=
 for W in $ALLWELLS; do
-  WELL=`echo $W | grep WBHP`
+  WELL=`echo $W | grep WBHP | grep -v WBHPH`
 
   if [ "$ALLOPTS" == "" ]; then
     OPT=`echo $W | cut -d ":" -f 1`
