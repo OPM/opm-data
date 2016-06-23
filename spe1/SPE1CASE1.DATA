@@ -62,6 +62,15 @@ WELLDIMS
 UNIFOUT
 
 GRID
+
+-- The INIT keyword is used to request an .INIT file. The .INIT file
+-- is written before the simulation actually starts, and contains grid
+-- properties and saturation tables as inferred from the input
+-- deck. There are no other keywords which can be used to configure
+-- exactly what is written to the .INIT file.
+INIT
+
+
 -- -------------------------------------------------------------------------
 NOECHO
 
