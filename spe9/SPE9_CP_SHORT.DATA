@@ -507,7 +507,7 @@ WCONPROD
 TSTEP
 10*10 /
 
--- At 300 days, the max oil rate for all producers is lowered
+-- At 100 days, the max oil rate for all producers is lowered
 -- to 100 STBO per D:
 WCONPROD
 --   #:   1           2      3     4      9
@@ -518,7 +518,7 @@ WCONPROD
 TSTEP
 6*10 /
 
--- At 360 days, the max oil rate for all producers is changed
+-- At 160 days, the max oil rate for all producers is changed
 -- back to 1500 STBO per D:
 WCONPROD
 --   #:   1           2      3     4       9
@@ -528,7 +528,7 @@ WCONPROD
 
 TSTEP
 5*10 /
--- End of simulation at 900 days
+-- End of simulation at 210 days
 
 END
 
