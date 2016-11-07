@@ -293,7 +293,7 @@ SWOF
 SOLUTION
 -- ---------------------------------------------------------------------------
 RESTART
-SPE9_CP_SHORT 11 /
+SPE9_CP_SHORT 15 /
 
 EQUIL
 -- Item 1: datum depth (ft)
