@@ -2,11 +2,14 @@
 # needs summary.x from ert, gnuplot, and pdflatex
 
 # this requires the summary.x binary from ert (if not in search PATH)
-SUMMARY_X=summary.x
+SUMMARY_X=$1/summary.x
 
 OUTPUT=norne-wells
 DIRS="ECL.2014.2 opm-simulation-reference"
 DECK=NORNE_ATW2013
+
+test -d flow && DIRS="$DIRS flow"
+test -d flow_ebos && DIRS="$DIRS flow_ebos"
 
 # if empty all options will be plotted
 OPTS="WBHP WOPR WGPR WWPR"
@@ -76,7 +79,8 @@ for WELL in $WELLS ; do
         PLOTS="$PLOTS,"
         LC=`expr $LC + 2`
       fi
-      PLOTS="$PLOTS \"${DIR}/$WELL.gnu\" u 1:${COUNT} title \"$DIR\" w l lw $LW lc $LC"
+      title=`echo $DIR | tr _ -`
+      PLOTS="$PLOTS \"${DIR}/$WELL.gnu\" u 1:${COUNT} title \"$title\" w l lw $LW lc $LC"
     done
     echo "plot $PLOTS" >> $PLOTFILE
     gnuplot $PLOTFILE
