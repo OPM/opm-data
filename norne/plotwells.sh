@@ -5,9 +5,9 @@
 SUMMARY_X=$1/summary.x
 
 DIRS="$2"
-test -z $DIRS && DIRS="ECL.2014.2 opm-simulation-reference"
+test -z "$DIRS" && DIRS="ECL.2014.2 opm-simulation-reference"
 OUTPUT=$3
-test -z $OUTPUT && OUTPUT=norne-wells
+test -z "$OUTPUT" && OUTPUT=norne-wells
 DECK=NORNE_ATW2013
 
 test -d flow && DIRS="$DIRS flow"
