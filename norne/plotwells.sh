@@ -10,7 +10,7 @@ OUTPUT=$3
 test -z "$OUTPUT" && OUTPUT=norne-wells
 DECK=NORNE_ATW2013
 
-test -d flow && DIRS="$DIRS flow"
+test -d flow_legacy && DIRS="$DIRS flow_legacy"
 test -d flow_ebos && DIRS="$DIRS flow_ebos"
 
 # if empty all options will be plotted
