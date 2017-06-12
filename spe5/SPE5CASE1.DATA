@@ -1,0 +1,213 @@
+-- This reservoir simulation deck is made available under the Open Database
+-- License: http://opendatacommons.org/licenses/odbl/1.0/. Any rights in
+-- individual contents of the database are licensed under the Database Contents
+-- License: http://opendatacommons.org/licenses/dbcl/1.0/
+
+-- Copyright (C) 2016 IRIS
+
+-- This simulation is based on the data given in 
+-- 'Fifth comparison of Solution Project: Evaluation of Miscible Flood Simulators' 
+-- by Killough et at. SPE16000 1987
+
+
+---------------------------------------------------------------------------
+------------------------ SPE5 - CASE 1 ------------------------------------
+---------------------------------------------------------------------------
+
+RUNSPEC
+-- -------------------------------------------------------------------------
+
+TITLE
+   SPE5 - CASE 1
+
+INCLUDE
+  'SPE5.BASE' /
+
+WCONPROD
+-- Item #:1	2      3     4	   5  9
+	'PROD' 'OPEN' 'ORAT' 12000 4* 1000 /
+/
+
+WCONINJE
+-- Item #:1	 2	 3	 4	5      6  7
+	'INJW'	'WATER'	'OPEN'	'RATE'	12000 1* 10000 /
+	'INJG'	'GAS'	'OPEN'	'RATE'	12000 1* 10000 /
+/
+WSOLVENT
+'INJG'  1.0/
+/
+
+WELOPEN
+ 'INJW' 'SHUT' /
+ 'INJG' 'SHUT' /
+/
+-- Start production for two years
+TSTEP
+--Advance the simulater once a month for TWO years:
+31 28 31 30 31 30 31 31 30 31 30 31
+31 28 31 30 31 30 31 31 30 31 30 31  
+/
+-- Start WAG injection after 2 years with 1 year cycle
+WELOPEN
+ 'INJW' 'OPEN' /
+ 'INJG' 'SHUT' /
+/
+TSTEP
+--Advance the simulater once a month for ONE years:
+31 28 31 30 31 30 31 31 30 31 30 31
+/
+WELOPEN
+ 'INJW' 'SHUT' /
+ 'INJG' 'OPEN' /
+/
+TSTEP
+--Advance the simulater once a month for ONE years:
+31 28 31 30 31 30 31 31 30 31 30 31
+/
+WELOPEN
+ 'INJW' 'OPEN' /
+ 'INJG' 'SHUT' /
+/
+TSTEP
+--Advance the simulater once a month for ONE years:
+31 28 31 30 31 30 31 31 30 31 30 31
+/
+WELOPEN
+ 'INJW' 'SHUT' /
+ 'INJG' 'OPEN' /
+/
+TSTEP
+--Advance the simulater once a month for ONE years:
+31 28 31 30 31 30 31 31 30 31 30 31
+/
+WELOPEN
+ 'INJW' 'OPEN' /
+ 'INJG' 'SHUT' /
+/
+TSTEP
+--Advance the simulater once a month for ONE years:
+31 28 31 30 31 30 31 31 30 31 30 31
+/
+WELOPEN
+ 'INJW' 'SHUT' /
+ 'INJG' 'OPEN' /
+/
+TSTEP
+--Advance the simulater once a month for ONE years:
+31 28 31 30 31 30 31 31 30 31 30 31
+/
+WELOPEN
+ 'INJW' 'OPEN' /
+ 'INJG' 'SHUT' /
+/
+TSTEP
+--Advance the simulater once a month for ONE years:
+31 28 31 30 31 30 31 31 30 31 30 31
+/
+WELOPEN
+ 'INJW' 'SHUT' /
+ 'INJG' 'OPEN' /
+/
+TSTEP
+--Advance the simulater once a month for ONE years:
+31 28 31 30 31 30 31 31 30 31 30 31
+/
+WELOPEN
+ 'INJW' 'OPEN' /
+ 'INJG' 'SHUT' /
+/
+TSTEP
+--Advance the simulater once a month for ONE years:
+31 28 31 30 31 30 31 31 30 31 30 31
+/
+WELOPEN
+ 'INJW' 'SHUT' /
+ 'INJG' 'OPEN' /
+/
+TSTEP
+--Advance the simulater once a month for ONE years:
+31 28 31 30 31 30 31 31 30 31 30 31
+/
+WELOPEN
+ 'INJW' 'OPEN' /
+ 'INJG' 'SHUT' /
+/
+TSTEP
+--Advance the simulater once a month for ONE years:
+31 28 31 30 31 30 31 31 30 31 30 31
+/
+WELOPEN
+ 'INJW' 'SHUT' /
+ 'INJG' 'OPEN' /
+/
+TSTEP
+--Advance the simulater once a month for ONE years:
+31 28 31 30 31 30 31 31 30 31 30 31
+/
+WELOPEN
+ 'INJW' 'OPEN' /
+ 'INJG' 'SHUT' /
+/
+TSTEP
+--Advance the simulater once a month for ONE years:
+31 28 31 30 31 30 31 31 30 31 30 31
+/
+WELOPEN
+ 'INJW' 'SHUT' /
+ 'INJG' 'OPEN' /
+/
+TSTEP
+--Advance the simulater once a month for ONE years:
+31 28 31 30 31 30 31 31 30 31 30 31
+/
+WELOPEN
+ 'INJW' 'OPEN' /
+ 'INJG' 'SHUT' /
+/
+TSTEP
+--Advance the simulater once a month for ONE years:
+31 28 31 30 31 30 31 31 30 31 30 31
+/
+WELOPEN
+ 'INJW' 'SHUT' /
+ 'INJG' 'OPEN' /
+/
+TSTEP
+--Advance the simulater once a month for ONE years:
+31 28 31 30 31 30 31 31 30 31 30 31
+/
+WELOPEN
+ 'INJW' 'OPEN' /
+ 'INJG' 'SHUT' /
+/
+TSTEP
+--Advance the simulater once a month for ONE years:
+31 28 31 30 31 30 31 31 30 31 30 31
+/
+WELOPEN
+ 'INJW' 'SHUT' /
+ 'INJG' 'OPEN' /
+/
+TSTEP
+--Advance the simulater once a month for ONE years:
+31 28 31 30 31 30 31 31 30 31 30 31
+/
+WELOPEN
+ 'INJW' 'OPEN' /
+ 'INJG' 'SHUT' /
+/
+TSTEP
+--Advance the simulater once a month for ONE years:
+31 28 31 30 31 30 31 31 30 31 30 31
+/
+WELOPEN
+ 'INJW' 'SHUT' /
+ 'INJG' 'OPEN' /
+/
+TSTEP
+--Advance the simulater once a month for ONE years + 4 leap days:
+31 28 31 30 31 30 31 31 30 31 30 35
+/
+-- End simulation after 20 years
+
+END
