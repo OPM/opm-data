@@ -11,7 +11,7 @@ test -z "$OUTPUT" && OUTPUT=norne-wells
 DECK=NORNE_ATW2013
 
 test -d flow_legacy && DIRS="$DIRS flow_legacy"
-test -d flow_ebos && DIRS="$DIRS flow_ebos"
+test -d flow && DIRS="$DIRS flow"
 
 # if empty all options will be plotted
 OPTS="WBHP WOPR WGPR WWPR"
