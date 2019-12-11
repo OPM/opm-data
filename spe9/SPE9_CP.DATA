@@ -414,15 +414,15 @@ WELSPECS
 --	     - stated to be 60ft in Killough
 
 -- #: 1	       2   3  4 5	 6	7  
- 'INJE1 '  'P'  24 25  9110 'WATER'	60   /
- 'PRODU2 '  'P'   5  1  9110 'OIL'	60   /
- 'PRODU3 '  'P'   8  2  9110 'OIL'	60   /
- 'PRODU4 '  'P'  11  3  9110 'OIL'	60   /
- 'PRODU5 '  'P'  10  4  9110 'OIL'	60   /
- 'PRODU6 '  'P'  12  5  9110 'OIL'	60   /
- 'PRODU7 '  'P'   4  6  9110 'OIL'	60   /
- 'PRODU8 '  'P'   8  7  9110 'OIL'	60   /
- 'PRODU9 '  'P'  14  8  9110 'OIL'	60   /
+ 'INJE1'  'P'  24 25  9110 'WATER'	60   /
+ 'PRODU2'  'P'   5  1  9110 'OIL'	60   /
+ 'PRODU3'  'P'   8  2  9110 'OIL'	60   /
+ 'PRODU4'  'P'  11  3  9110 'OIL'	60   /
+ 'PRODU5'  'P'  10  4  9110 'OIL'	60   /
+ 'PRODU6'  'P'  12  5  9110 'OIL'	60   /
+ 'PRODU7'  'P'   4  6  9110 'OIL'	60   /
+ 'PRODU8'  'P'   8  7  9110 'OIL'	60   /
+ 'PRODU9'  'P'  14  8  9110 'OIL'	60   /
  'PRODU10'  'P'  11  9  9110 'OIL'	60   /
  'PRODU11'  'P'  12 10  9110 'OIL'	60   /
  'PRODU12'  'P'  10 11  9110 'OIL'	60   /
