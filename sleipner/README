@@ -1,0 +1,19 @@
+The Sleipner 2019 Benchmark Model has been published by Equinor ASA, and is available at
+
+  https://co2datashare.org/dataset/sleipner-2019-benchmark-model
+
+The data in this directory are owned by Equinor (operator), ExxonMobil Exploration and Production Norway AS,
+LOTOS Exploration and Production Norge AS, KUFPEC Norway AS and Norwegian Petroleum Directorate (NPD).
+
+The license of the data is the SLEIPNER CO2 REFERENCE DATASET LICENSE, which can be found at
+
+  https://co2datashare.org/view/license/5c681b1f-04af-4c09-8ec0-febb16ce6fc8
+
+
+NOTE:
+The grid file is larger than github's file size limit, and has been compressed with gzip.
+To decompress it, do:
+
+  gunzip Sleipner_Reference_Model_cleaned.grdecl.gz
+
+on the command line (in Linux, macOS, or Windows Subsystem for Linux).
