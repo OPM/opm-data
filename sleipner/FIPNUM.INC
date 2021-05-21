@@ -1,3 +1,8 @@
+--  Copyright 2021 NORCE.
+--
+--  This file is provided under license, see COPYING for a summary, or license.pdf
+--  for the full license text.
+
 FIPNUM 
 75520*1 
 158592*2 

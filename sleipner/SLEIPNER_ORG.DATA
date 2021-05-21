@@ -3,12 +3,12 @@
 -- individual contents of the database are licensed under the Database Contents
 -- License: http://opendatacommons.org/licenses/dbcl/1.0/
 -- 
--- Copyright (C) 2021 Norce
--- Copyright (C) 2021 Sintef
+-- Copyright (C) 2021 NORCE
+-- Copyright (C) 2021 SINTEF
 -- 
--- Note that seperate license and copyright applies to the included files in this deck
--- In particular the grid is owned by "The Sleipner Group" and needs to be downloaded 
--- from https://co2datashare.org/dataset/sleipner-2019-benchmark-model 
+-- Note that seperate license and copyright applies to the included files in this deck.
+-- In particular the grid stored in Sleipner_Reference_Model_cleaned.grdecl.gz is owned
+-- by "The Sleipner Group", see the README for a list of companies.
 -- See the attached license.pdf for details on the license of the grid
 
 RUNSPEC
