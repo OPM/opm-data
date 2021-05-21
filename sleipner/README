@@ -1,0 +1,35 @@
+The Sleipner 2019 Benchmark Model has been published by Equinor ASA
+on behalf of the Sleipner Group, and is available at:
+
+  https://co2datashare.org/dataset/sleipner-2019-benchmark-model
+
+We recommend visiting that site for full information about the data set,
+as well as more data than that provided here, which is only a simulation
+model.
+
+The data in this directory are owned by Equinor (operator), ExxonMobil
+Exploration and Production Norway AS, LOTOS Exploration and Production
+Norge AS, KUFPEC Norway AS and Norwegian Petroleum Directorate (NPD).
+
+The license of the data is the SLEIPNER CO2 REFERENCE DATASET LICENSE,
+which can be found in the 'license.pdf' file, as well as at:
+
+  https://co2datashare.org/sleipner-2019-benchmark-model/static/license.pdf
+
+A summary of the license is available in the 'COPYING' file, as well as at:
+
+  https://co2datashare.org/view/license/5c681b1f-04af-4c09-8ec0-febb16ce6fc8
+
+NOTE 1:
+The grid file is larger than github's file size limit, and has been
+compressed with gzip. To decompress it, do:
+
+  gunzip Sleipner_Reference_Model_cleaned.grdecl.gz
+
+on the command line (in Linux, macOS, or Windows Subsystem for Linux).
+
+NOTE 2:
+The data for feeder and intralayer permeabilities are not the mean
+values given in the original dataset, but are updated by history
+matching with ERT and OPM Flow. This part is therefore considered
+Adapted Material under the license.
