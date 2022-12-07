@@ -177,20 +177,20 @@ WPAVE
   1*      0.000      'WELL'       'ALL' /
 
 
-GRUPNET 
-    'FIELD'     20.000  5* /
-     'PROD'     20.000  5* /
-  'MANI-B2'  1*    8  1*        'NO'  2* /
-  'MANI-B1'  1*    8  1*        'NO'  2* /
-  'MANI-K1'  1* 9999  4* /
- 'B1-DUMMY'  1* 9999  4* /
-  'MANI-D1'  1*    8  1*        'NO'  2* /
-  'MANI-D2'  1*    8  1*        'NO'  2* /
-  'MANI-K2'  1* 9999  4* /
- 'D2-DUMMY'  1* 9999  4* /
-  'MANI-E1'  1*    9  1*        'NO'  2* /
-  'MANI-E2'  1*    9  4* /
-/
+--GRUPNET 
+--    'FIELD'     20.000  5* /
+--     'PROD'     20.000  5* /
+--  'MANI-B2'  1*    8  1*        'NO'  2* /
+--  'MANI-B1'  1*    8  1*        'NO'  2* /
+--  'MANI-K1'  1* 9999  4* /
+-- 'B1-DUMMY'  1* 9999  4* /
+--  'MANI-D1'  1*    8  1*        'NO'  2* /
+--  'MANI-D2'  1*    8  1*        'NO'  2* /
+--  'MANI-K2'  1* 9999  4* /
+-- 'D2-DUMMY'  1* 9999  4* /
+--  'MANI-E1'  1*    9  1*        'NO'  2* /
+--  'MANI-E2'  1*    9  4* /
+--/
 
 VAPPARS 
       0.500      0.000 /
@@ -213,9 +213,9 @@ WCONINJE
      'C-4H'       'GAS'  1*      'RATE' 392180.973  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 25.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -1115,9 +1115,9 @@ WCONINJE
      'C-4H'       'GAS'  1*      'RATE' 1649276.284  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 329.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -1350,9 +1350,9 @@ RPTSCHED
  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 / 
 
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 439.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -1373,9 +1373,9 @@ WCONINJE
      'C-4H'       'GAS'  1*      'RATE' 2345625.148  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 441.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -1464,9 +1464,9 @@ WTRACER
      'C-4H'       'SEA'      1.000  1* /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 480.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -1508,9 +1508,9 @@ WCONINJE
      'C-4H'       'GAS'  1*      'RATE' 3333218.481  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 502.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -1532,9 +1532,9 @@ WCONINJE
      'C-4H'       'GAS'  1*      'RATE' 4794070.667  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 505.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -1964,9 +1964,9 @@ WTRACER
      'C-3H'       'SEA'      1.000  1* /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 561.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -2712,9 +2712,9 @@ WCONINJE
      'F-2H'     'WATER'  1*      'RATE'   2511.819  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 725.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -2762,9 +2762,9 @@ WCONINJE
      'F-2H'     'WATER'  1*      'RATE'   2636.400  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 734.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -2791,9 +2791,9 @@ WCONINJE
      'F-2H'     'WATER'  1*      'RATE'   2758.167  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 737.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -4389,9 +4389,9 @@ WCONINJE
      'F-3H'     'WATER'  1*      'RATE'   5615.200  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 1321.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -4420,9 +4420,9 @@ WCONINJE
      'F-3H'     'WATER'  1*      'RATE'   5605.108  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 1333.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -4807,9 +4807,9 @@ WCONINJE
      'F-3H'     'WATER'  1*      'RATE'   6873.375  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 1395.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -4868,9 +4868,9 @@ WTRACER
      'F-4H'       'SEA'      1.000  1* /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 1425.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -4989,9 +4989,9 @@ WCONINJE
      'F-4H'     'WATER'  1*      'RATE'      0.000  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 1517.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -5361,9 +5361,9 @@ RPTSCHED
  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 / 
 
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 1708.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -5392,9 +5392,9 @@ WCONINJE
      'F-4H'     'WATER'  1*      'RATE'    551.500  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 1712.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -5424,9 +5424,9 @@ WCONINJE
      'F-4H'     'WATER'  1*      'RATE'    214.676  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 1729.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -5487,9 +5487,9 @@ WCONINJE
      'F-4H'     'WATER'  1*      'RATE'    490.444  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 1760.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -5549,9 +5549,9 @@ WCONINJE
      'F-4H'     'WATER'  1*      'RATE'    874.131  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 1774.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -5666,9 +5666,9 @@ RPTSCHED
  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 / 
 
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 1803.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -5699,9 +5699,9 @@ WCONINJE
      'F-4H'     'WATER'  1*      'RATE'   1728.433  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 1821.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -5817,9 +5817,9 @@ WCONINJE
      'F-4H'     'WATER'  1*      'RATE'   2949.912  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 1882.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -5883,9 +5883,9 @@ RPTSCHED
  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 / 
 
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 1893.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -5913,9 +5913,9 @@ WCONINJE
      'F-4H'     'WATER'  1*      'RATE'   2463.600  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 1901.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -5944,9 +5944,9 @@ WCONINJE
      'F-4H'     'WATER'  1*      'RATE'   2538.533  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 1913.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -6002,9 +6002,9 @@ WCONINJE
      'F-4H'     'WATER'  1*      'RATE'   2381.260  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 1941.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -6322,9 +6322,9 @@ RPTSCHED
  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 / 
 
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 2094.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -6416,9 +6416,9 @@ RPTRST
  0 / 
 
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 2125.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -6478,9 +6478,9 @@ WCONINJE
      'F-4H'     'WATER'  1*      'RATE'   2908.112  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 2134.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -6677,9 +6677,9 @@ RPTSCHED
  0 0 0 0 0 0 2 2 2 0 1 1 0 1 1 0 0 / 
 
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 2177.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -7007,9 +7007,9 @@ WCONINJE
      'F-4H'     'WATER'  1*      'RATE'   1908.643  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 2247.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -7079,9 +7079,9 @@ RPTSCHED
  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 / 
 
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 2266.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -7144,9 +7144,9 @@ WTRACER
     'C-4AH'       'SEA'      1.000  1* /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 2278.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -7449,9 +7449,9 @@ WCONINJE
      'F-4H'     'WATER'  1*      'RATE'   1412.857  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 2460.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -7614,9 +7614,9 @@ WCONINJE
      'F-4H'     'WATER'  1*      'RATE'   1761.055  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 2521.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -7831,9 +7831,9 @@ WCONINJE
      'F-4H'     'WATER'  1*      'RATE'   1627.617  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 2644.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -8261,9 +8261,9 @@ WCONINJE
      'F-4H'     'WATER'  1*      'RATE'   1317.500  1* 600 /
 /
 
-GECON 
-    'FIELD'   1000.000  5*        'NO'  1* /
-/
+--GECON 
+--    'FIELD'   1000.000  5*        'NO'  1* /
+--/
 
 -- 2794.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES
@@ -8867,7 +8867,8 @@ WCONINJE
 /
 
 WTEST 
-    'D-3BH'     30.000       'PEG' 1000  1* /
+    'D-3BH'     30.000       'PE' 1000  1* /
+--    'D-3BH'     30.000       'PEG' 1000  1* /
 /
 
 RPTSCHED 
@@ -9436,12 +9437,13 @@ WCONINJE
 /
 
 WTEST 
-     'K-3H'     30.000       'PEG' 1000  1* /
+     'K-3H'     30.000       'PE' 1000  1* /
+--     'K-3H'     30.000       'PEG' 1000  1* /
 /
 
-WPITAB 
-     'K-3H'    1 /
-/
+--WPITAB 
+--     'K-3H'    1 /
+--/
 
 -- 3282.000000 days from start of simulation ( 6 'NOV' 1997 )
 DATES

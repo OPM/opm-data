@@ -108,9 +108,6 @@ UNIFOUT
 --FMTOUT
 --FMTIN
 
-OPTIONS
-77* 1 /
-
 ---------------------------------------------------------
 --
 --	Input of grid geometry
@@ -127,9 +124,6 @@ GRIDFILE
 -- optional for postprocessing of GRID
 MAPAXES
  0.  100.  0.  0.  100.  0.  /
-
-GRIDUNIT
-METRES  /
 
 -- requests output of INIT file
 INIT
@@ -636,8 +630,8 @@ ZIPPY2
 'SIM=4.2' 'MINSTEP=1E-6' /
 
 -- PI reduction in case of water cut
-INCLUDE
-'./INCLUDE/PI/pimultab_low-high_aug-2006.inc' / 
+--INCLUDE
+--'./INCLUDE/PI/pimultab_low-high_aug-2006.inc' / 
 
 -- History
 INCLUDE
