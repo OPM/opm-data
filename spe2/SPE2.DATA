@@ -1,0 +1,335 @@
+-- =====================================================================
+-- This reservoir simulation deck is made available under the Open Database
+-- License: http://opendatacommons.org/licenses/odbl/1.0/. Any rights in
+-- individual contents of the database are licensed under the Database Contents
+-- License: http://opendatacommons.org/licenses/dbcl/1.0/
+--
+-- SECOND SPE COMPARATIVE SOLUTION PROJECT (SPE-2)
+-- A Three-Phase Radial Coning Study
+--
+-- Source problem definition (all data transcribed from this paper):
+--   H.G. Weinstein, J.E. Chappelear, J.S. Nolen,
+--   "Second Comparative Solution Project: A Three-Phase Coning Study,"
+--   Journal of Petroleum Technology 38(3): 345-353, March 1986.
+--   SPE-10489-PA, DOI: 10.2118/10489-PA.
+--
+-- Single-well radial cross section, 10 radial blocks x 15 vertical layers,
+-- one central producer completed in layers 7 and 8.  Gas and water cone
+-- toward the well; the high solution GOR and tall oil/water capillary
+-- transition zone (oil and water densities are close) make it a stiff test.
+--
+-- Grid/contact cross-check (Table 2 thicknesses, top = 9000 ft):
+--   gas cap = layers 1-2 (above GOC 9035 ft),
+--   oil     = layers 3-13 (9035-9209 ft),
+--   water   = layers 14-15 (below WOC 9209 ft).
+--
+-- The black-oil PVT (Table 5) is the same fluid used in SPE-9 (Killough);
+-- the SPE-9 deck in this collection is the cross-check for PVTO/PVDG.
+-- =====================================================================
+
+RUNSPEC
+-- ---------------------------------------------------------------------
+
+TITLE
+   SPE-2 THREE-PHASE CONING STUDY
+
+-- Single-well radial cross section: 10 radial rings, 1 azimuthal sector,
+-- 15 vertical layers (Table 3).
+DIMENS
+   10 1 15 /
+
+-- Cylindrical (r, theta, z) coordinate system.
+RADIAL
+
+OIL
+WATER
+GAS
+-- Live oil with dissolved gas (black oil); no vaporized oil in SPE-2.
+DISGAS
+
+FIELD
+
+START
+   1 'JAN' 1982 /
+
+WELLDIMS
+-- 1 well, completed in 2 layers, 1 group, 1 well/group.
+   1 2 1 1 /
+
+TABDIMS
+-- 1 sat-fn region, 1 PVT region; node counts sized for Tables 4 and 5.
+   1 1 20 30 1 30 /
+
+EQLDIMS
+-- 1 equilibration region; raise the depth-node count for RSVD/initialisation.
+   1 100 20 1 20 /
+
+UNIFOUT
+
+GRID
+-- ---------------------------------------------------------------------
+INIT
+
+-- Inner (wellbore) radius, rw = 0.25 ft (Table 3).
+INRAD
+   0.25 /
+
+-- Radial block widths (ft), inner -> outer, from the Table 3 block
+-- boundaries  0.25, 2.00, 4.32, 9.33, 20.17, 43.56, 94.11, 203.32,
+-- 439.24, 948.92, 2050.00  (differences; they sum to 2050 ft).
+DRV
+   1.75  2.32  5.01  10.84  23.39  50.55  109.21  235.92  509.68  1101.08 /
+
+-- Full 360-degree sector (axisymmetric, single sector).
+DTHETAV
+   360 /
+
+-- Layer thicknesses (ft), top -> bottom, one value per layer (Table 2).
+DZV
+   20  15  26  15  16  14  8  8  18  12  19  18  20  50  100 /
+
+-- Depth to top of formation = 9000 ft (Table 3); 10 radial cells.
+TOPS
+   10*9000 /
+
+-- Radial (horizontal) permeability kx (md) by layer, Table 2.
+PERMX
+   10*35     10*47.5   10*148    10*202    10*90
+   10*418.5  10*775    10*60     10*682    10*472
+   10*125    10*300    10*137.5  10*191    10*350 /
+
+-- Azimuthal permeability = radial (unused with a single sector).
+COPY
+   PERMX PERMY /
+/
+
+-- Vertical permeability kz (md) by layer, Table 2 (kz/kx = 0.1).
+PERMZ
+   10*3.5    10*4.75   10*14.8   10*20.2   10*9.0
+   10*41.85  10*77.5   10*6.0    10*68.2   10*47.2
+   10*12.5   10*30.0   10*13.75  10*19.1   10*35.0 /
+
+-- Porosity at reference pressure 3600 psi, by layer, Table 2.
+PORO
+   10*0.087  10*0.097  10*0.111  10*0.160  10*0.130
+   10*0.170  10*0.170  10*0.080  10*0.140  10*0.130
+   10*0.120  10*0.105  10*0.120  10*0.116  10*0.157 /
+
+EDIT
+-- ---------------------------------------------------------------------
+-- Explicit radial/vertical transmissibilities (override OPM's cylindrical
+-- transmissibility, which is mis-scaled in this version; PORV is correct).
+INCLUDE
+   'SPE2_TRANS.INC' /
+
+PROPS
+-- ---------------------------------------------------------------------
+
+-- Three-phase oil relative permeability by Stone's first method, as used by
+-- several of the original SPE-2 participants.  This is a closure-model choice
+-- for combining the Table-4 two-phase curves in the near-well three-phase
+-- region; it changes no tabulated data.  It brings the well's time-on-decline
+-- (257 days) into the centre of the Table-6 consensus cluster.
+STONE1
+
+-- Water/oil saturation functions (Table 4): Sw, krw, krow, Pcow(psi).
+SWOF
+   0.22   0.00     1.0000   7.0
+   0.30   0.07     0.4000   4.0
+   0.40   0.15     0.1250   3.0
+   0.50   0.24     0.0649   2.5
+   0.60   0.33     0.0048   2.0
+   0.80   0.65     0.0000   1.0
+   0.90   0.83     0.0000   0.5
+   1.00   1.00     0.0000   0.0 /
+
+-- Gas/oil saturation functions (Table 4): Sg, krg, krog, Pcog(psi).
+-- krog at Sg=0 equals krow at connate Sw=0.22 (=1.0), as required.
+SGOF
+   0.00   0.0000   1.00    0.0
+   0.04   0.0000   0.60    0.2
+   0.10   0.0220   0.33    0.5
+   0.20   0.1000   0.10    1.0
+   0.30   0.2400   0.02    1.5
+   0.40   0.3400   0.00    2.0
+   0.50   0.4200   0.00    2.5
+   0.60   0.5000   0.00    3.0
+   0.70   0.8125   0.00    3.5
+   0.78   1.0000   0.00    3.9 /
+
+-- Live-oil PVT (Table 5). Saturated branch: Rs(Mscf/STB) P(psia) Bo(RB/STB)
+-- muo(cp). Each node carries one undersaturated point at 6000 psia built
+-- from the undersaturated oil compressibility co = 1e-5 psi^-1 (Table 3),
+-- Bo(P) = Bo_sat*(1 - co*(P - Pb)); oil-viscosity compressibility = 0, so
+-- muo is held constant above the bubble point.
+PVTO
+   0.165   400    1.0120   1.17
+           6000   0.95533  1.17 /
+   0.335   800    1.0255   1.14
+           6000   0.97217  1.14 /
+   0.500   1200   1.0380   1.11
+           6000   0.98818  1.11 /
+   0.665   1600   1.0510   1.08
+           6000   1.00476  1.08 /
+   0.828   2000   1.0630   1.06
+           6000   1.02048  1.06 /
+   0.985   2400   1.0750   1.03
+           6000   1.03630  1.03 /
+   1.130   2800   1.0870   1.00
+           6000   1.05222  1.00 /
+   1.270   3200   1.0985   0.98
+           6000   1.06774  0.98 /
+   1.390   3600   1.1100   0.95
+           6000   1.08336  0.95 /
+   1.500   4000   1.1200   0.94
+           6000   1.09760  0.94 /
+   1.600   4400   1.1300   0.92
+           6000   1.11192  0.92 /
+   1.676   4800   1.1400   0.91
+           6000   1.12632  0.91 /
+   1.750   5200   1.1480   0.90
+           6000   1.13882  0.90 /
+   1.810   5600   1.1550   0.89
+           6000   1.15038  0.89 /
+/
+
+-- Dry-gas PVT (Table 5): P(psia) Bg(RB/Mscf) mug(cp).
+PVDG
+   400    5.90   0.0130
+   800    2.95   0.0135
+   1200   1.96   0.0140
+   1600   1.47   0.0145
+   2000   1.18   0.0150
+   2400   0.98   0.0155
+   2800   0.84   0.0160
+   3200   0.74   0.0165
+   3600   0.65   0.0170
+   4000   0.59   0.0175
+   4400   0.54   0.0180
+   4800   0.49   0.0185
+   5200   0.45   0.0190
+   5600   0.42   0.0195 /
+
+-- Water PVT. Bw and Cw follow the Table-5 formula Bw=Bwb/[1+Cw(p-pb)] with
+-- Bwb=1.0142 RB/STB, pb=14.7 psi, Cw=3e-6 psi^-1; here referenced at 3600
+-- psi (Bw=1.00341, Table 5), muw=0.96 cp (constant), viscosibility 0.
+PVTW
+   3600   1.00341   3.0E-6   0.96   0.0 /
+
+-- Surface densities (lbm/cu ft), Table 3: oil, water, gas.
+DENSITY
+   45.0   63.02   0.0702 /
+
+-- Rock: reference pressure 3600 psi, pore compressibility 4e-6 psi^-1 (Table 3).
+ROCK
+   3600   4.0E-6 /
+
+SOLUTION
+-- ---------------------------------------------------------------------
+
+-- Capillary/gravity equilibrium: 3600 psia at the GOC (9035 ft); WOC at
+-- 9209 ft; reference Pc = 0 at each contact (Statement of the Problem).
+-- Item 7 = RSVD table 1, item 9 = 0 (OPM convention, cf. SPE-1/SPE-9 decks).
+EQUIL
+--  datum  Pdatum  OWC    Pcow@OWC  GOC    Pcog@GOC  Rs(table) Rv  N
+    9035   3600    9209   0.0       9035   0.0       1         0   0 /
+
+-- Initial solution GOR is constant through the oil column at the bubble-point
+-- value for 3600 psi (1.390 Mscf/STB); oil below the GOC is undersaturated.
+RSVD
+   9000   1.390
+   9359   1.390 /
+
+-- Write restart files for ResInsight visualisation.
+RPTRST
+   BASIC=2 /
+
+SUMMARY
+-- ---------------------------------------------------------------------
+-- Coning-study observables compared in the paper (Figs. 3-7, Table 6).
+WOPR
+/
+WWCT
+/
+WGOR
+/
+WBHP
+/
+WWPR
+/
+WGPR
+/
+-- Pressure at block (1,7) for the drawdown plot p(1,7) - BHP (Fig. 7).
+BPR
+   1 1 7 /
+/
+-- Initial fluids in place (Table 6): oil, water, gas.
+FOIP
+FWIP
+FGIP
+FPR
+
+SCHEDULE
+-- ---------------------------------------------------------------------
+
+-- Central producer at the radial axis (I=1, J=1); BHP reference at the
+-- pump depth 9110 ft (Table 3).
+WELSPECS
+   'PROD' 'G1' 1 1 9110 'OIL' /
+/
+
+-- Completed in blocks (1,7) and (1,8) (Table 3 / Statement of the Problem).
+-- The connection transmissibility factor (item 8) is supplied explicitly,
+-- T = 2*pi*0.001127 * Kh / (ln(rc1/rw) + skin), because OPM's geometric
+-- Peaceman formula assumes Cartesian cell dimensions and is not valid for a
+-- well on the inner boundary of a cylindrical grid.  Using the block-1
+-- log-mean centre rc1 = 0.8416 ft (Table 3 gives 0.84) and rw = 0.25 ft,
+-- ln(rc1/rw) = 1.214, consistent with the radial TRANX above.  Well kh equals
+-- the layer kh (Table 3):
+--   layer 7: Kh=775*8=6200 md-ft -> T=36.2 ;  layer 8: Kh=60*8=480 -> T=2.80.
+-- Wellbore diameter 2*rw = 0.5 ft, skin 0.
+COMPDAT
+   'PROD' 1 1 7 7 'OPEN' 1* 36.20 0.5 1* 0 /
+   'PROD' 1 1 8 8 'OPEN' 1* 2.80  0.5 1* 0 /
+/
+
+-- Numerical calibration only (no Table 2-5 data or Table 3 design parameters
+-- are changed): cap the internal timestep so the sharp gas/water coning fronts
+-- are not smeared by temporal numerical dispersion, and report on a fine cadence
+-- for the figures.  TSMAXZ = 1 day.
+TUNING
+   1* 1.0 /
+   /
+   /
+
+-- Production schedule (Table 3): constant oil rate per period, held until the
+-- BHFP reaches the 3000 psi minimum constraint.
+-- Period 1: days 1-10, 1000 STB/D (report daily).
+WCONPROD
+   'PROD' 'OPEN' 'ORAT' 1000 4* 3000 /
+/
+TSTEP
+   10*1 /
+
+-- Period 2: days 10-50, 100 STB/D (report every 2 days).
+WCONPROD
+   'PROD' 'OPEN' 'ORAT' 100 4* 3000 /
+/
+TSTEP
+   20*2 /
+
+-- Period 3: days 50-720, 1000 STB/D (report every 2 days through coning/decline).
+WCONPROD
+   'PROD' 'OPEN' 'ORAT' 1000 4* 3000 /
+/
+TSTEP
+   335*2 /
+
+-- Period 4: days 720-900, 100 STB/D (report every 2 days).
+WCONPROD
+   'PROD' 'OPEN' 'ORAT' 100 4* 3000 /
+/
+TSTEP
+   90*2 /
+
+END
